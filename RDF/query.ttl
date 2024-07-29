@@ -1,0 +1,40 @@
+PREFIX : <http://example.org/restaurant#>
+PREFIX schema: <http://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?dishName
+WHERE {
+  :Client_Francesco :hasPreference ?preferences .
+  ?preferences :maxCaloryIntake ?maxCaloryIntake ;
+               :allergens ?allergenList ;
+               :dietaryCategory ?dietaryCategory .
+
+  ?menuSection schema:hasMenuItem ?dish .
+  ?dish schema:name ?dishName ;
+        schema:recipeIngredient ?ingredient .
+
+  ?ingredient schema:calories ?calories ;
+              schema:allergen ?ingredientAllergen ;
+              schema:recipeCategory ?ingredientCategory .
+
+  FILTER (
+    (
+      (?maxCaloryIntake = "low" && xsd:integer(?calories) < 400) ||
+      (?maxCaloryIntake = "medium" && xsd:integer(?calories) < 900) ||
+      (?maxCaloryIntake = "high")
+    ) &&
+    (?dietaryCategory = ?ingredientCategory) &&
+    (!CONTAINS(LCASE(?allergenList), LCASE(?ingredientAllergen)))
+  )
+}
+GROUP BY ?dishName
+HAVING (COUNT(?ingredient) = SUM(IF(
+  (
+    (?maxCaloryIntake = "low" && xsd:integer(?calories) < 400) ||
+    (?maxCaloryIntake = "medium" && xsd:integer(?calories) < 900) ||
+    (?maxCaloryIntake = "high")
+  ) &&
+  (?dietaryCategory = ?ingredientCategory) &&
+  (!CONTAINS(LCASE(?allergenList), LCASE(?ingredientAllergen))),
+  1, 0
+)))
