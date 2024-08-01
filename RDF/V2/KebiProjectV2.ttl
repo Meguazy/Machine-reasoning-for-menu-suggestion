@@ -12,12 +12,10 @@
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#dietaryPreferenceHasCaloricRanges
-:dietaryPreferenceHasCaloricRanges rdf:type owl:ObjectProperty ;
-                                   rdfs:domain :DietaryPreference ;
-                                   rdfs:range :CaloricRanges ;
-                                   rdfs:comment "Associates a dietary preference with a specific range of acceptable caloric values for meals."@en ;
-                                   rdfs:label "dietaryPreferenceHasCaloricRanges"@en .
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#ingredientHasPreferences
+:ingredientHasPreferences rdf:type owl:ObjectProperty ;
+                          rdfs:domain :FoodIngredient ;
+                          rdfs:range :Preferences .
 
 
 ###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#menuHasMenuSection
@@ -34,6 +32,12 @@
                            rdfs:comment "Specifies the food ingredients that make up a menu item."@en .
 
 
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#menuItemHasPreferences
+:menuItemHasPreferences rdf:type owl:ObjectProperty ;
+                        rdfs:domain :MenuItem ;
+                        rdfs:range :Preferences .
+
+
 ###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#menuSectionHasMenuItem
 :menuSectionHasMenuItem rdf:type owl:ObjectProperty ;
                         rdfs:domain :MenuSection ;
@@ -41,11 +45,10 @@
                         rdfs:comment "Links a menu section to the menu items it includes."@en .
 
 
-###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#personHasDietaryPreferences
-:personHasDietaryPreferences rdf:type owl:ObjectProperty ;
-                             rdfs:domain :Person ;
-                             rdfs:range :DietaryPreference ;
-                             rdfs:comment "Indicates the dietary preferences and restrictions of a person, including allergens and preferred caloric range."@en .
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#personHasPreferences
+:personHasPreferences rdf:type owl:ObjectProperty ;
+                      rdfs:domain :Person ;
+                      rdfs:range :Preferences .
 
 
 ###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#personIsClientOfRestaurant
@@ -53,6 +56,24 @@
                             rdfs:domain :Person ;
                             rdfs:range :Restaurant ;
                             rdfs:comment "Associates a person with the restaurant they are a client of."@en .
+
+
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#preferenceHasAllergens
+:preferenceHasAllergens rdf:type owl:ObjectProperty ;
+                        rdfs:domain :Preferences ;
+                        rdfs:range :Allergens .
+
+
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#preferenceHasCaloricLevel
+:preferenceHasCaloricLevel rdf:type owl:ObjectProperty ;
+                           rdfs:domain :Preferences ;
+                           rdfs:range :CaloricLevel .
+
+
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#preferenceHasDietaryPreference
+:preferenceHasDietaryPreference rdf:type owl:ObjectProperty ;
+                                rdfs:domain :Preferences ;
+                                rdfs:range :DietaryPreference .
 
 
 ###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#restaurantHasMenu
@@ -68,14 +89,14 @@
 
 ###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#caloricRangesHasMaxCalories
 :caloricRangesHasMaxCalories rdf:type owl:DatatypeProperty ;
-                             rdfs:domain :CaloricRanges ;
+                             rdfs:domain :CaloricLevel ;
                              rdfs:range xsd:nonNegativeInteger ;
                              rdfs:comment "Specifies the maximum number of kilocalories allowed in this caloric range. This value is used to categorize menu items or food ingredients according to their caloric content."@en .
 
 
 ###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#caloricRangesHasMinCalories
 :caloricRangesHasMinCalories rdf:type owl:DatatypeProperty ;
-                             rdfs:domain :CaloricRanges ;
+                             rdfs:domain :CaloricLevel ;
                              rdfs:range xsd:nonNegativeInteger ;
                              rdfs:comment "Specifies the minimum number of kilocalories allowed in this caloric range. This value defines the lower boundary for classifying menu items or food ingredients based on their caloric content."@en .
 
@@ -106,6 +127,13 @@
                            rdfs:domain :FoodIngredient ;
                            rdfs:range xsd:nonNegativeInteger ;
                            rdfs:comment "Indicates the number of kilocalories contained in a specific quantity of the food ingredient. This data is used to calculate the total caloric content of a menu item."@en .
+
+
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#foodIngredientHasDietaryCategory
+:foodIngredientHasDietaryCategory rdf:type owl:DatatypeProperty ;
+                                  rdfs:subPropertyOf owl:topDataProperty ;
+                                  rdfs:domain :FoodIngredient ;
+                                  rdfs:range xsd:string .
 
 
 ###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#foodIngredientHasName
@@ -157,6 +185,18 @@
                   rdfs:comment "Indicates the price of the menu item, typically expressed in the local currency. This value is used for billing and pricing."@en .
 
 
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#menuSectionHasDescription
+:menuSectionHasDescription rdf:type owl:DatatypeProperty ;
+                           rdfs:domain :MenuSection ;
+                           rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#menuSectionHasTitle
+:menuSectionHasTitle rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :MenuSection ;
+                     rdfs:range xsd:string .
+
+
 ###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#personHasName
 :personHasName rdf:type owl:DatatypeProperty ;
                rdfs:domain :Person ;
@@ -175,13 +215,20 @@
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#CaloricRanges
-:CaloricRanges rdf:type owl:Class ;
-               rdfs:comment "Represents a range of caloric values for classifying food items based on their caloric content."@en .
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Allergens
+:Allergens rdf:type owl:Class ;
+           rdfs:subClassOf :Preferences .
+
+
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#CaloricLevel
+:CaloricLevel rdf:type owl:Class ;
+              rdfs:subClassOf :Preferences ;
+              rdfs:comment "Represents a range of caloric values for classifying food items based on their caloric content."@en .
 
 
 ###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#DietaryPreference
 :DietaryPreference rdf:type owl:Class ;
+                   rdfs:subClassOf :Preferences ;
                    rdfs:comment "Describes an individual's dietary habits, restrictions, and preferences, including preferred caloric intake and allergens to avoid."@en .
 
 
@@ -210,6 +257,10 @@
         rdfs:comment "An individual, typically a client or customer, with specific dietary preferences and other personal attributes."@en .
 
 
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Preferences
+:Preferences rdf:type owl:Class .
+
+
 ###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Restaurant
 :Restaurant rdf:type owl:Class ;
             rdfs:comment "An establishment that prepares and serves food and beverages to customers, offering various menus and dishes."@en .
@@ -221,27 +272,75 @@
 
 ###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Appetizers
 :Appetizers rdf:type owl:NamedIndividual ,
-                     :MenuSection .
+                     :MenuSection ;
+            :menuSectionHasDescription "A curated selection of light and flavorful dishes meant to kickstart your dining experience. Our appetizers range from classic small plates to inventive bites, offering a delightful prelude to your main course. This section includes both cold and hot options, as well as a variety of vegetarian, gluten-free, and seafood choices." ;
+            :menuSectionHasTitle "Appetizers"@en .
+
+
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Carnivore
+:Carnivore rdf:type owl:NamedIndividual ,
+                    :DietaryPreference .
 
 
 ###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Coppa
 :Coppa rdf:type owl:NamedIndividual ,
-                :FoodIngredient .
+                :FoodIngredient ;
+       :foodIngredientHasAllergens "" ;
+       :foodIngredientHasCalories "300"^^xsd:nonNegativeInteger ;
+       :foodIngredientHasName "Coppa" .
+
+
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Egg
+:Egg rdf:type owl:NamedIndividual ,
+              :Allergens .
+
+
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Gluten
+:Gluten rdf:type owl:NamedIndividual ,
+                 :Allergens .
 
 
 ###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Gnocco_Fritto
 :Gnocco_Fritto rdf:type owl:NamedIndividual ,
-                        :FoodIngredient .
+                        :FoodIngredient ;
+               :foodIngredientHasCalories "300"^^xsd:nonNegativeInteger .
+
+
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#High
+:High rdf:type owl:NamedIndividual ,
+               :CaloricLevel ;
+      :caloricRangesHasMinCalories "900"^^xsd:nonNegativeInteger .
+
+
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Lactose
+:Lactose rdf:type owl:NamedIndividual ,
+                  :Allergens .
+
+
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Low
+:Low rdf:type owl:NamedIndividual ,
+              :CaloricLevel ;
+     :caloricRangesHasMaxCalories "400"^^xsd:nonNegativeInteger ;
+     :caloricRangesHasMinCalories "0"^^xsd:nonNegativeInteger .
 
 
 ###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Martina
 :Martina rdf:type owl:NamedIndividual ,
-                  :Person .
+                  :Person ;
+         :personIsClientOfRestaurant :Nero_Balsamico .
+
+
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Medium
+:Medium rdf:type owl:NamedIndividual ,
+                 :CaloricLevel ;
+        :caloricRangesHasMinCalories "401"^^xsd:nonNegativeInteger ,
+                                     "899"^^xsd:nonNegativeInteger .
 
 
 ###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Menu_SummerSpecial
 :Menu_SummerSpecial rdf:type owl:NamedIndividual ,
-                             :Menu .
+                             :Menu ;
+                    :menuSectionHasMenuItem :Tagliere_di_salumi_nostrani_servito_con_Gnocco_Fritto .
 
 
 ###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Mortadella
@@ -251,7 +350,13 @@
 
 ###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Nero_Balsamico
 :Nero_Balsamico rdf:type owl:NamedIndividual ,
-                         :Restaurant .
+                         :Restaurant ;
+                :restaurantHasMenu :Menu_SummerSpecial .
+
+
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Nuts
+:Nuts rdf:type owl:NamedIndividual ,
+               :Allergens .
 
 
 ###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Omnivore
@@ -271,7 +376,22 @@
 
 ###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Tagliere_di_salumi_nostrani_servito_con_Gnocco_Fritto
 :Tagliere_di_salumi_nostrani_servito_con_Gnocco_Fritto rdf:type owl:NamedIndividual ,
-                                                                :MenuItem .
+                                                                :MenuItem ;
+                                                       :menuItemHasFoodIngredient :Coppa ,
+                                                                                  :Gnocco_Fritto ,
+                                                                                  :Mortadella ,
+                                                                                  :Prosciutto_Crudo ,
+                                                                                  :Salame .
+
+
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Vegan
+:Vegan rdf:type owl:NamedIndividual ,
+                :DietaryPreference .
+
+
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Vegetarian
+:Vegetarian rdf:type owl:NamedIndividual ,
+                     :DietaryPreference .
 
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
