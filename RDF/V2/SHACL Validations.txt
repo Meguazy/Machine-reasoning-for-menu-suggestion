@@ -1,0 +1,152 @@
+@prefix : <http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProject/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+#################################################################
+#    Shapes
+#################################################################
+
+### PersonShape
+:PersonShape
+    a sh:NodeShape ;
+    sh:targetClass :Person ;
+    sh:property [
+        sh:path :personHasName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path :personHasAllergens ;
+        sh:class :Allergens ;
+        sh:minCount 0 ;
+    ] ;
+    sh:property [
+        sh:path :personHasCalorieLevel ;
+        sh:class :CaloricLevel ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path :personHasDietaryPreference ;
+        sh:class :DietaryPreference ;
+        sh:minCount 1 ;
+    ] .
+
+### FoodIngredientShape
+:FoodIngredientShape
+    a sh:NodeShape ;
+    sh:targetClass :FoodIngredient ;
+    sh:property [
+        sh:path :foodIngredientHasName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path :foodIngredientHasCalories ;
+        sh:datatype xsd:nonNegativeInteger ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path :foodIngredientHasAllergens ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+    ] ;
+    sh:property [
+        sh:path :foodIngredientHasDietaryCategory ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] .
+
+### MenuItemShape
+:MenuItemShape
+    a sh:NodeShape ;
+    sh:targetClass :MenuItem ;
+    sh:property [
+        sh:path :menuItemHasName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path :menuItemHasFoodIngredient ;
+        sh:class :FoodIngredient ;
+        sh:minCount 1 ;
+    ] .
+
+### MenuShape
+:MenuShape
+    a sh:NodeShape ;
+    sh:targetClass :Menu ;
+    sh:property [
+        sh:path :menuHasTitle ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path :menuHasDescription ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+    ] ;
+    sh:property [
+        sh:path :menuHasMenuSection ;
+        sh:class :MenuSection ;
+        sh:minCount 1 ;
+    ] .
+
+### MenuSectionShape
+:MenuSectionShape
+    a sh:NodeShape ;
+    sh:targetClass :MenuSection ;
+    sh:property [
+        sh:path :menuSectionHasTitle ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path :menuSectionHasMenuItem ;
+        sh:class :MenuItem ;
+        sh:minCount 1 ;
+    ] .
+
+### RestaurantShape
+:RestaurantShape
+    a sh:NodeShape ;
+    sh:targetClass :Restaurant ;
+    sh:property [
+        sh:path :restaurantHasName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path :restaurantHasMenu ;
+        sh:class :Menu ;
+        sh:minCount 1 ;
+    ] .
+
+### CaloricLevelShape
+:CaloricLevelShape
+    a sh:NodeShape ;
+    sh:targetClass :CaloricLevel ;
+    sh:property [
+        sh:path :caloricLevelHasName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] .
+
+### DietaryPreferenceShape
+:DietaryPreferenceShape
+    a sh:NodeShape ;
+    sh:targetClass :DietaryPreference ;
+    sh:property [
+        sh:path :dietaryPreferenceHasName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] .
+
+### AllergensShape
+:AllergensShape
+    a sh:NodeShape ;
+    sh:targetClass :Allergens ;
+    sh:property [
+        sh:path :allergenHasName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] .
