@@ -1,0 +1,50 @@
+PREFIX : <http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProject/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?itemName ?menuCaloricCategory ?personCaloricCategoryName ?allergen ?personAllergen ?dietaryRestriction ?personDietaryPreference
+WHERE {
+  # Retrieve Fabio's caloric preference
+  ?person rdf:type :Person .
+  ?person :personHasName "Fabio" . # Specify the individual's name
+  ?person :personHasCalorieLevel ?personCaloricCategory .
+  ?personCaloricCategory :caloricLevelHasName ?personCaloricCategoryName .
+
+  # Retrieve Fabio's dietary preference
+  ?person :personHasDietaryPreference ?personDietaryPreference .
+  ?personDietaryPreference :dietaryPreferenceHasName ?personDietaryPreferenceName .
+
+  # Retrieve Fabio's allergens
+  OPTIONAL {
+    ?person :personHasAllergens ?personAllergen .
+    ?personAllergen :allergenHasName ?personAllergenName .
+  }
+
+  # Find menu items with the same caloric preference
+  ?menuItem rdf:type :MenuItem .
+  ?menuItem :menuItemHasCaloricCategory ?menuCaloricCategory .
+  ?menuItem :menuItemHasName ?itemName .
+
+  OPTIONAL { ?menuItem :menuItemHasAllergen ?allergen . }
+  OPTIONAL { ?menuItem :menuItemHasDietaryRestriction ?dietaryRestriction . }
+  
+  # Caloric category filter
+  FILTER(
+    (?personCaloricCategoryName = "High" && (?menuCaloricCategory = "Low" || ?menuCaloricCategory = "Medium" || ?menuCaloricCategory = "High")) ||
+    (?personCaloricCategoryName = "Medium" && (?menuCaloricCategory = "Low" || ?menuCaloricCategory = "Medium")) ||
+    ?menuCaloricCategory = ?personCaloricCategoryName
+  )
+  
+  # Dietary preference filter
+  FILTER(
+    (?personDietaryPreferenceName = "Omnivore" && (?dietaryRestriction = "Omnivore" || !bound(?dietaryRestriction))) ||
+    ((?personDietaryPreferenceName = "Vegetarian" || ?personDietaryPreferenceName = "Vegan") && (!bound(?dietaryRestriction)))
+  )
+
+  # Allergen filter
+  FILTER NOT EXISTS {
+    ?menuItem :menuItemHasAllergen ?menuAllergenName .
+    ?person :personHasAllergens ?personAllergen .
+    ?personAllergen :allergenHasName ?menuAllergenName .
+  }
+}
+ORDER BY ?itemName
