@@ -1,0 +1,3397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0g0jz5r" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Web Modeler" exporterVersion="a9550ae" camunda:diagramRelationId="0c85c2c8-394a-487b-b369-5e9f42e6289a" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0">
+  <decision id="Decision_1s9612b" name="Ingredient_List">
+    <variable id="InformationItem_0s1xg7e" name="Ingredient_List" />
+    <literalExpression id="LiteralExpression_0140x97">
+      <text>[
+    {"name": "prosciutto_crudo", "calories": 300},
+    {"name": "coppa", "calories": 400},
+    {"name": "salame", "calories": 450},
+    {"name": "mortadella", "calories": 310},
+    {"name": "gnocco_fritto", "calories": 350},
+    {"name": "fried_potatoes", "calories": 312},
+    {"name": "beef", "calories": 250},
+    {"name": "pickled_vegetables", "calories": 20},
+    {"name": "spinach", "calories": 23},
+    {"name": "parmesan_cheese", "calories": 431},
+    {"name": "mullet_roe", "calories": 350},
+    {"name": "octopus", "calories": 82},
+    {"name": "olives", "calories": 145},
+    {"name": "tomato_gazpacho", "calories": 30},
+    {"name": "potato_chips", "calories": 536},
+    {"name": "baked_potatoes", "calories": 93},
+    {"name": "chickpeas", "calories": 164},
+    {"name": "asparagus", "calories": 20},
+    {"name": "cherry_tomatoes", "calories": 18},
+    {"name": "olive_oil", "calories": 884},
+    {"name": "burrata_cheese", "calories": 250},
+    {"name": "salad", "calories": 15},
+    {"name": "tomato_coral", "calories": 30},
+    {"name": "caramelized_onion", "calories": 125},
+    {"name": "tortellini", "calories": 370},
+    {"name": "meat_broth", "calories": 25},
+    {"name": "ricotta_cheese", "calories": 174},
+    {"name": "butter", "calories": 717},
+    {"name": "sage", "calories": 315},
+    {"name": "rice", "calories": 130},
+    {"name": "balsamic_vinegar", "calories": 88},
+    {"name": "egg_tagliatelle", "calories": 370},
+    {"name": "beef_ragu", "calories": 150},
+    {"name": "mezze_maniche_pasta", "calories": 370},
+    {"name": "arugula_pesto", "calories": 450},
+    {"name": "stracciatella_cheese", "calories": 305},
+    {"name": "toasted_almonds", "calories": 576},
+    {"name": "spaghetti", "calories": 371},
+    {"name": "pecorino_cheese", "calories": 387},
+    {"name": "red_shrimp_tartare", "calories": 120},
+    {"name": "lime", "calories": 30},
+    {"name": "sea_bream_ravioli", "calories": 280},
+    {"name": "squid_ink_sauce", "calories": 120},
+    {"name": "basil_cream", "calories": 250},
+    {"name": "parmesan_cream", "calories": 300},
+    {"name": "candied_lemon", "calories": 300},
+    {"name": "beef_filet", "calories": 271},
+    {"name": "borettane_onions", "calories": 40},
+    {"name": "tuna", "calories": 144},
+    {"name": "teriyaki_sauce", "calories": 89},
+    {"name": "vegetables", "calories": 50},
+    {"name": "guacamole", "calories": 160},
+    {"name": "eggplant", "calories": 25},
+    {"name": "parsley_oil", "calories": 900},
+    {"name": "chicken", "calories": 239},
+    {"name": "fontina_cheese", "calories": 389},
+    {"name": "pancetta", "calories": 600},
+    {"name": "potato_cream", "calories": 100},
+    {"name": "quail", "calories": 200},
+    {"name": "cointreau_demi_glace", "calories": 80},
+    {"name": "potato_millefeuille", "calories": 200},
+    {"name": "beef_cheek", "calories": 250},
+    {"name": "horseradish_potato_puree", "calories": 150},
+    {"name": "sauteed_agretti", "calories": 50},
+    {"name": "barozzi_cake", "calories": 400},
+    {"name": "mascarpone_cream", "calories": 450},
+    {"name": "tiramisu_parfait", "calories": 300},
+    {"name": "coffee_coral", "calories": 50},
+    {"name": "sponge_cake", "calories": 270},
+    {"name": "alchermes", "calories": 290},
+    {"name": "custard", "calories": 150},
+    {"name": "chocolate_macaron", "calories": 450},
+    {"name": "crisp_wafer", "calories": 500},
+    {"name": "zabaglione_chantilly_cream", "calories": 280},
+    {"name": "fresh_raspberries", "calories": 52},
+    {"name": "anise_panna_cotta", "calories": 300},
+    {"name": "pink_peppercorn_tuille", "calories": 500},
+    {"name": "caramelized_orange", "calories": 150},
+    {"name": "fresh_fruit_salad", "calories": 50},
+    {"name": "lemon_sorbet", "calories": 150},
+    {"name": "garlic_oil", "calories": 684},
+    {"name": "seasonal_vegetables", "calories": 20}
+]</text>
+    </literalExpression>
+  </decision>
+  <inputData id="InputData_07ltp9n" name="Clients_Diet" />
+  <inputData id="InputData_0c7ltpy" name="Clients_allergens" />
+  <decision id="Decision_0aet1u3" name="Filter ingredients by allergens">
+    <informationRequirement id="InformationRequirement_1r7wi0l">
+      <requiredInput href="#InputData_0c7ltpy" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_04epe03" hitPolicy="COLLECT">
+      <input id="InputClause_0j6ag7y" label="Clients_allergens" biodi:width="321" camunda:inputVariable="Clients_allergens">
+        <inputExpression id="LiteralExpression_1lqpamk" typeRef="string">
+          <text>Clients_allergens</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1t7gm32" label="Filtered_Ingredients_By_Allergens" name="Filtered_Ingredients_By_Allergens" typeRef="string" />
+      <rule id="DecisionRule_1hjuk0f">
+        <inputEntry id="UnaryTests_0k8ogvy">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uptfuv">
+          <text>"lemon_sorbet"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0d6jict">
+        <inputEntry id="UnaryTests_19aul5o">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tvaxbm">
+          <text>"fresh_fruit_salad"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17nuvs6">
+        <inputEntry id="UnaryTests_1ad7qd8">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10lg2dt">
+          <text>"caramelized_orange"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0myztli">
+        <inputEntry id="UnaryTests_0lccx7d">
+          <text>not(contains(lower case(?), "gluten"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15oj5w6">
+          <text>"pink_peppercorn_tuille"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0b465t0">
+        <inputEntry id="UnaryTests_0xilnvt">
+          <text>not(contains(lower case(?), "lactose"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pv876j">
+          <text>"anise_panna_cotta"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0weclu3">
+        <inputEntry id="UnaryTests_0s19g56">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1omo3tc">
+          <text>"fresh_raspberries"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0f7orec">
+        <inputEntry id="UnaryTests_074p7zk">
+          <text>not(contains(lower case(?), "lactose"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ujj186">
+          <text>"zabaglione_chantilly_cream"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ou9khs">
+        <inputEntry id="UnaryTests_0e4ngqn">
+          <text>not(contains(lower case(?), "gluten"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vozjg9">
+          <text>"crisp_wafer"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_010hkhe">
+        <inputEntry id="UnaryTests_0cjejyl">
+          <text>not(contains(lower case(?), "gluten") or contains(lower case(?), "lactose") or contains(lower case(?), "nuts"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mficag">
+          <text>"chocolate_macaron"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_19wbnqx">
+        <inputEntry id="UnaryTests_1kgjb56">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1s9mu1l">
+          <text>"custard"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_19jd4f6">
+        <inputEntry id="UnaryTests_0r61pca">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0lfkc7s">
+          <text>"alchermes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1yk30rh">
+        <inputEntry id="UnaryTests_04na7ez">
+          <text>not(contains(lower case(?), "gluten") or contains(lower case(?), "lactose"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1g3ec92">
+          <text>"sponge_cake"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zkmubn">
+        <inputEntry id="UnaryTests_0o7n9m6">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09vja0f">
+          <text>"coffee_coral"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1tyf6k9">
+        <inputEntry id="UnaryTests_1h2b8tv">
+          <text>not(contains(lower case(?), "lactose"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_048lb46">
+          <text>"tiramisu_parfait"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1lmpbj7">
+        <inputEntry id="UnaryTests_08h6zue">
+          <text>not(contains(lower case(?), "lactose"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0pk6bld">
+          <text>"mascarpone_cream"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1pc71z8">
+        <inputEntry id="UnaryTests_0flgwup">
+          <text>not(contains(lower case(?), "lactose"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07d9fqn">
+          <text>"barozzi_cake"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0p2zj4j">
+        <inputEntry id="UnaryTests_1psv4w6">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14g214d">
+          <text>"sauteed_agretti"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1uqu10d">
+        <inputEntry id="UnaryTests_181848h">
+          <text>not(contains(lower case(?), "lactose"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0g7jjy2">
+          <text>"horseradish_potato_puree"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hg0kx9">
+        <inputEntry id="UnaryTests_1l6oivl">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qen5gs">
+          <text>"beef_cheek"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ex8x6h">
+        <inputEntry id="UnaryTests_1lgufmx">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1948d70">
+          <text>"potato_millefeuille"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_08q7uzf">
+        <inputEntry id="UnaryTests_0ry712i">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ksb9te">
+          <text>"cointreau_demi_glace"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09vlakl">
+        <inputEntry id="UnaryTests_1c8yfvz">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1l4zzny">
+          <text>"quail"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jk6chf">
+        <inputEntry id="UnaryTests_0w0tjlt">
+          <text>not(contains(lower case(?), "lactose"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vexaup">
+          <text>"potato_cream"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ayqwwu">
+        <inputEntry id="UnaryTests_0xu55x9">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tjl9v9">
+          <text>"pancetta"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0v81iqs">
+        <inputEntry id="UnaryTests_0xue2bi">
+          <text>not(contains(lower case(?), "lactose"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1eracxt">
+          <text>"fontina_cheese"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0i32le7">
+        <inputEntry id="UnaryTests_1u5s1d0">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1owxj8l">
+          <text>"chicken"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0gcjy92">
+        <inputEntry id="UnaryTests_0e59m24">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1czem78">
+          <text>"garlic_oil"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1df490i">
+        <inputEntry id="UnaryTests_1orifmu">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1e6prmh">
+          <text>"seasonal_vegetables"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0gt907g">
+        <inputEntry id="UnaryTests_0ge5ruj">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1xahwa0">
+          <text>"parsley_oil"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xuc77p">
+        <inputEntry id="UnaryTests_0gfz5nr">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0pazl6d">
+          <text>"eggplant"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_064ciex">
+        <inputEntry id="UnaryTests_1lrlwir">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_11lkuaa">
+          <text>"guacamole"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_19r6u50">
+        <inputEntry id="UnaryTests_0tk89y3">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_063qg6a">
+          <text>"vegetables"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ojolmi">
+        <inputEntry id="UnaryTests_0vvhm44">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bohpds">
+          <text>"teriyaki_sauce"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1mp23gy">
+        <inputEntry id="UnaryTests_0xy91yy">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18gmz8q">
+          <text>"tuna"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1r21288">
+        <inputEntry id="UnaryTests_0imxiv2">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0lgqsv3">
+          <text>"borettane_onions"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07jnnrh">
+        <inputEntry id="UnaryTests_15co5ag">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gh4za5">
+          <text>"beef_filet"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kcfo7q">
+        <inputEntry id="UnaryTests_0qxh9hu">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vfzpsw">
+          <text>"candied_lemon"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0h9t153">
+        <inputEntry id="UnaryTests_174hyj7">
+          <text>not(contains(lower case(?), "lactose"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cnt7sg">
+          <text>"parmesan_cream"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17iowj1">
+        <inputEntry id="UnaryTests_0iu8mtt">
+          <text>not(contains(lower case(?), "lactose"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qadljo">
+          <text>"basil_cream"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1l056de">
+        <inputEntry id="UnaryTests_08lyzs1">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zx72p1">
+          <text>"squid_ink_sauce"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zkso23">
+        <inputEntry id="UnaryTests_1rlcynj">
+          <text>not(contains(lower case(?), "gluten"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02g7iss">
+          <text>"sea_bream_ravioli"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0jliq0m">
+        <inputEntry id="UnaryTests_1u3o5tn">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_049ay8b">
+          <text>"lime"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0rfgjiv">
+        <inputEntry id="UnaryTests_0f09p2p">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07y57c6">
+          <text>"red_shrimp_tartare"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ottomh">
+        <inputEntry id="UnaryTests_14gi3ou">
+          <text>not(contains(lower case(?), "lactose"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1v5w7vm">
+          <text>"pecorino_cheese"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zysxme">
+        <inputEntry id="UnaryTests_1q09vxj">
+          <text>not(contains(lower case(?), "gluten"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ndphfi">
+          <text>"spaghetti"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0njhzkv">
+        <inputEntry id="UnaryTests_0iluwhq">
+          <text>not(contains(lower case(?), "nuts"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0k2p7on">
+          <text>"toasted_almonds"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fpqok6">
+        <inputEntry id="UnaryTests_06e20sv">
+          <text>not(contains(lower case(?), "lactose"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1g4bkkz">
+          <text>"stracciatella_cheese"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1q4as8t">
+        <inputEntry id="UnaryTests_1idlt9y">
+          <text>not(contains(lower case(?), "nuts"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1t5fppf">
+          <text>"arugula_pesto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1r4zdx5">
+        <inputEntry id="UnaryTests_1k4zpzv">
+          <text>not(contains(lower case(?), "gluten"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0awd9ys">
+          <text>"mezze_maniche_pasta"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_13rpuj7">
+        <inputEntry id="UnaryTests_11iebze">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fw96av">
+          <text>"beef_ragu"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1j3ql8v">
+        <inputEntry id="UnaryTests_10yd5ra">
+          <text>not(contains(lower case(?), "gluten") or contains(lower case(?), "egg"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gyhv9y">
+          <text>"egg_tagliatelle"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xoqnj4">
+        <inputEntry id="UnaryTests_0qkikcq">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1a49j6o">
+          <text>"balsamic_vinegar"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0nbmb6j">
+        <inputEntry id="UnaryTests_1voivdl">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1bj6u0i">
+          <text>"rice"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17fi38z">
+        <inputEntry id="UnaryTests_0e8nllb">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1u7e0p4">
+          <text>"sage"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09nq8o4">
+        <inputEntry id="UnaryTests_08vq17o">
+          <text>not(contains(lower case(?), "lactose"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1f1anc9">
+          <text>"butter"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1r9wlbu">
+        <inputEntry id="UnaryTests_18fy5yl">
+          <text>not(contains(lower case(?), "lactose"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gxry0u">
+          <text>"ricotta_cheese"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0of058y">
+        <inputEntry id="UnaryTests_1vo9ffi">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15r5yex">
+          <text>"meat_broth"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1lmemk0">
+        <inputEntry id="UnaryTests_1mwulrw">
+          <text>not(contains(lower case(?), "gluten") or contains(lower case(?), "egg"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0f6am20">
+          <text>"tortellini"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tj4ko8">
+        <inputEntry id="UnaryTests_10sf2h4">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bw35zu">
+          <text>"caramelized_onion"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00urkw0">
+        <inputEntry id="UnaryTests_1vmdhe5">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0beniiv">
+          <text>"tomato_coral"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0nabgzb">
+        <inputEntry id="UnaryTests_1635dne">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wrqf86">
+          <text>"salad"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1y2z0bl">
+        <inputEntry id="UnaryTests_13jm3fi">
+          <text>not(contains(lower case(?), "lactose"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bcd3r5">
+          <text>"burrata_cheese"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1et1jrt">
+        <inputEntry id="UnaryTests_1xahe73">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nwycrt">
+          <text>"olive_oil"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12r1sa4">
+        <inputEntry id="UnaryTests_06mjfuo">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13olhef">
+          <text>"cherry_tomatoes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1tm8bss">
+        <inputEntry id="UnaryTests_0axp4in">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0glqu75">
+          <text>"asparagus"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_093kvsv">
+        <inputEntry id="UnaryTests_0sld6nu">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nvgb4l">
+          <text>"chickpeas"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1lvccsy">
+        <inputEntry id="UnaryTests_1vn3fne">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1migxsb">
+          <text>"baked_potatoes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0mw4ozb">
+        <inputEntry id="UnaryTests_11svurl">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16gcs1m">
+          <text>"potato_chips"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0gt7ecy">
+        <inputEntry id="UnaryTests_0pqbr8a">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1h2v259">
+          <text>"tomato_gazpacho"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0lp0chu">
+        <inputEntry id="UnaryTests_0i3v0jn">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0vgoad6">
+          <text>"olives"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1suno1p">
+        <inputEntry id="UnaryTests_0lxp7jg">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qs9b6s">
+          <text>"octopus"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_03nzcet">
+        <inputEntry id="UnaryTests_0ml9izn">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0w3s56i">
+          <text>"mullet_roe"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0sqtwfa">
+        <inputEntry id="UnaryTests_04u90vz">
+          <text>not(contains(lower case(?), "lactose"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1i9q3vk">
+          <text>"parmesan_cheese"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06z9p57">
+        <inputEntry id="UnaryTests_1piff2t">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1sh6s90">
+          <text>"spinach"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1mhwa66">
+        <inputEntry id="UnaryTests_1g2mw2i">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kqpx7a">
+          <text>"pickled_vegetables"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_05c37lz">
+        <inputEntry id="UnaryTests_0gh49an">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1a925fw">
+          <text>"beef"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_01mo69w">
+        <inputEntry id="UnaryTests_0lonsxo">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jyc31j">
+          <text>"fried_potatoes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tzzbnx">
+        <inputEntry id="UnaryTests_025hyi3">
+          <text>not(contains(lower case(?), "gluten"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_037zjt7">
+          <text>"gnocco_fritto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06f122i">
+        <inputEntry id="UnaryTests_0or60s2">
+          <text>not(contains(lower case(?), "lactose"))</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1yyz9l1">
+          <text>"mortadella"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1kb2dwz">
+        <inputEntry id="UnaryTests_0nh9ulu">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01ee1ql">
+          <text>"salame"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0pgylzo">
+        <inputEntry id="UnaryTests_0040v6z">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0e96rgh">
+          <text>"coppa"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1o5smyd">
+        <inputEntry id="UnaryTests_0szaiug">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0r2n9fm">
+          <text>"prosciutto_crudo"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1gzvz4p" name="Filter ingredients by dietary restriction">
+    <informationRequirement id="InformationRequirement_0g8uly4">
+      <requiredInput href="#InputData_07ltp9n" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0vtwpxy" hitPolicy="COLLECT">
+      <input id="InputClause_1mgj531" label="Clients_Diet">
+        <inputExpression id="LiteralExpression_0pzjny8" typeRef="string">
+          <text>Clients_Diet</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0p380a5" label="Filtered_Ingredients_By_Diet" name="Filtered_Ingredients_By_Diet" typeRef="string" />
+      <rule id="DecisionRule_1ke2kbl">
+        <inputEntry id="UnaryTests_1adkpjh">
+          <text>contains(lower case(?), "omnivore")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15ieokv">
+          <text>"prosciutto_crudo"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_16f2q1a">
+        <inputEntry id="UnaryTests_1xd64ux">
+          <text>contains(lower case(?), "omnivore")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ixck0n">
+          <text>"coppa"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jzu5hv">
+        <inputEntry id="UnaryTests_0dgblf8">
+          <text>contains(lower case(?), "omnivore")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1otxi10">
+          <text>"salame"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0lokc08">
+        <inputEntry id="UnaryTests_1k7ilk6">
+          <text>contains(lower case(?), "omnivore")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1m2d7lm">
+          <text>"mortadella"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0z6i5fc">
+        <inputEntry id="UnaryTests_0di57ef">
+          <text>contains(lower case(?), "omnivore")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1nznzpq">
+          <text>"beef"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0r58o93">
+        <inputEntry id="UnaryTests_0w85v8g">
+          <text>contains(lower case(?), "omnivore")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1xgx4jc">
+          <text>"mullet_roe"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00fr7nx">
+        <inputEntry id="UnaryTests_0daoqbc">
+          <text>contains(lower case(?), "omnivore")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0w962xf">
+          <text>"octopus"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0saccoa">
+        <inputEntry id="UnaryTests_05icpvx">
+          <text>contains(lower case(?), "omnivore")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tpt6ax">
+          <text>"meat_broth"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0mocp6x">
+        <inputEntry id="UnaryTests_162ycai">
+          <text>contains(lower case(?), "omnivore")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jk6dsy">
+          <text>"beef_ragu"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1cucxe2">
+        <inputEntry id="UnaryTests_0qvrhch">
+          <text>contains(lower case(?), "omnivore")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0vo3qp7">
+          <text>"red_shrimp_tartare"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ou323f">
+        <inputEntry id="UnaryTests_19azyno">
+          <text>contains(lower case(?), "omnivore")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qxfeu7">
+          <text>"beef_filet"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0d5hntv">
+        <inputEntry id="UnaryTests_0zat088">
+          <text>contains(lower case(?), "omnivore")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19g6wuo">
+          <text>"tuna"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0646yje">
+        <inputEntry id="UnaryTests_0alht57">
+          <text>contains(lower case(?), "omnivore")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19wwo5y">
+          <text>"chicken"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1w4g3nc">
+        <inputEntry id="UnaryTests_1fxrb2g">
+          <text>contains(lower case(?), "omnivore")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pvedn8">
+          <text>"pancetta"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ewte9i">
+        <inputEntry id="UnaryTests_0kgu4p6">
+          <text>contains(lower case(?), "omnivore")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0cnmr2i">
+          <text>"quail"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1soy1i0">
+        <inputEntry id="UnaryTests_0xpfva4">
+          <text>contains(lower case(?), "omnivore")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0m1hebf">
+          <text>"beef_cheek"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hqeonm">
+        <inputEntry id="UnaryTests_0pkmkqt">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qjo9aj">
+          <text>"parmesan_cheese"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ga77xo">
+        <inputEntry id="UnaryTests_0r4fim5">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nn2uc0">
+          <text>"egg_tagliatelle"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ywmm2w">
+        <inputEntry id="UnaryTests_1o0jdvo">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10tnkkm">
+          <text>"pecorino_cheese"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ox0rlt">
+        <inputEntry id="UnaryTests_040vg3m">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wpnl2h">
+          <text>"squid_ink_sauce"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1m07cgg">
+        <inputEntry id="UnaryTests_1cya6ju">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ij8s7s">
+          <text>"fontina_cheese"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1cpnhie">
+        <inputEntry id="UnaryTests_0a1gqz2">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02srmd9">
+          <text>"cointreau_demi_glace"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rizcmc">
+        <inputEntry id="UnaryTests_00gq0fo">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1y2fhut">
+          <text>"gnocco_fritto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wkr24f">
+        <inputEntry id="UnaryTests_1gw9cdc">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bw01kz">
+          <text>"fried_potatoes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0nd5h95">
+        <inputEntry id="UnaryTests_1ivkk6g">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0o1xsox">
+          <text>"pickled_vegetables"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0369qii">
+        <inputEntry id="UnaryTests_1eoua87">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1xriwsk">
+          <text>"spinach"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_14gxodm">
+        <inputEntry id="UnaryTests_0o0nij7">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_114xvh1">
+          <text>"olives"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0urkhgl">
+        <inputEntry id="UnaryTests_1p6hzlx">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05rg20g">
+          <text>"tomato_gazpacho"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1nszlei">
+        <inputEntry id="UnaryTests_1fk5pzh">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_08ddy92">
+          <text>"potato_chips"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0l94v4f">
+        <inputEntry id="UnaryTests_1e3xlld">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12svmyy">
+          <text>"baked_potatoes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_121u513">
+        <inputEntry id="UnaryTests_0deqe84">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ulfio6">
+          <text>"seasonal_vegetables"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0utg2xd">
+        <inputEntry id="UnaryTests_0xyzuaq">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0js418k">
+          <text>"garlic_oil"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1vz8i25">
+        <inputEntry id="UnaryTests_0zq5kco">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1sxeqbc">
+          <text>"chickpeas"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xcpwq3">
+        <inputEntry id="UnaryTests_1mg4m82">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vzp8n6">
+          <text>"asparagus"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zf8uc5">
+        <inputEntry id="UnaryTests_09e2m67">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0s59o4x">
+          <text>"cherry_tomatoes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bnx2m1">
+        <inputEntry id="UnaryTests_1fmhfjf">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06gwn0z">
+          <text>"olive_oil"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1k5nd9j">
+        <inputEntry id="UnaryTests_0tfivpj">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1yvgu9w">
+          <text>"burrata_cheese"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hhsisz">
+        <inputEntry id="UnaryTests_04dj1wm">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10lucim">
+          <text>"salad"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1vtikxn">
+        <inputEntry id="UnaryTests_16oqr70">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1p0wia3">
+          <text>"tomato_coral"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1lxwfu4">
+        <inputEntry id="UnaryTests_0vjqeyb">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0u7rr3d">
+          <text>"caramelized_onion"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1c7ztrz">
+        <inputEntry id="UnaryTests_07evcoi">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00e9inu">
+          <text>"tortellini"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07maxn0">
+        <inputEntry id="UnaryTests_0doq0s5">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00uexqw">
+          <text>"ricotta_cheese"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0x5tdcm">
+        <inputEntry id="UnaryTests_1brzf62">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0thgtcu">
+          <text>"butter"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0efx2f2">
+        <inputEntry id="UnaryTests_0b3cb7g">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07bzwt5">
+          <text>"sage"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0mnksga">
+        <inputEntry id="UnaryTests_1n1idqa">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0yxxk19">
+          <text>"rice"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1lh44i5">
+        <inputEntry id="UnaryTests_1yjkuvx">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0a3v93n">
+          <text>"balsamic_vinegar"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_178dnoo">
+        <inputEntry id="UnaryTests_0akzh3g">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16zkart">
+          <text>"mezze_maniche_pasta"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12u9cgw">
+        <inputEntry id="UnaryTests_0er8fu9">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wypb8h">
+          <text>"arugula_pesto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_14jgrzh">
+        <inputEntry id="UnaryTests_0a8kqvs">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0fbt3r7">
+          <text>"stracciatella_cheese"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1bvbtkw">
+        <inputEntry id="UnaryTests_11g2ynd">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uxnapd">
+          <text>"toasted_almonds"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0iwrxvi">
+        <inputEntry id="UnaryTests_146p4g0">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0eaglxj">
+          <text>"spaghetti"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kgz6o0">
+        <inputEntry id="UnaryTests_1vsxe3s">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06hvftr">
+          <text>"lime"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0jkp2lc">
+        <inputEntry id="UnaryTests_15vwwjs">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0miy4uj">
+          <text>"sea_bream_ravioli"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07eomz0">
+        <inputEntry id="UnaryTests_0243qcl">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00zuxhb">
+          <text>"basil_cream"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0jd7uyl">
+        <inputEntry id="UnaryTests_00nh35v">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0528cc0">
+          <text>"parmesan_cream"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1re1q1f">
+        <inputEntry id="UnaryTests_0v5vqsn">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1w2w4bw">
+          <text>"candied_lemon"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1blkem8">
+        <inputEntry id="UnaryTests_1hvlu84">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18fpney">
+          <text>"borettane_onions"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1qfuhzk">
+        <inputEntry id="UnaryTests_1dddm0y">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pzj75i">
+          <text>"teriyaki_sauce"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0llwe9o">
+        <inputEntry id="UnaryTests_11t4m64">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0eso3lp">
+          <text>"vegetables"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0iekwbd">
+        <inputEntry id="UnaryTests_0md8fdh">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04tet2f">
+          <text>"guacamole"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_034h5vd">
+        <inputEntry id="UnaryTests_1mindno">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1d3m2y7">
+          <text>"eggplant"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ge7v0p">
+        <inputEntry id="UnaryTests_11r0fnj">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uh1w6u">
+          <text>"parsley_oil"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zj0022">
+        <inputEntry id="UnaryTests_0fqyc0z">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0egxyg7">
+          <text>"potato_cream"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_022u20w">
+        <inputEntry id="UnaryTests_0doqqhv">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0h9s1q4">
+          <text>"potato_millefeuille"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0m7yqdy">
+        <inputEntry id="UnaryTests_0osjfz5">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0rhxen8">
+          <text>"horseradish_potato_puree"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1vhvdel">
+        <inputEntry id="UnaryTests_090zhbu">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sa3074">
+          <text>"sauteed_agretti"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ncmjus">
+        <inputEntry id="UnaryTests_18sf39h">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09xallb">
+          <text>"barozzi_cake"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0pbmke0">
+        <inputEntry id="UnaryTests_1ucicx8">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wkqe5g">
+          <text>"mascarpone_cream"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0byrwqv">
+        <inputEntry id="UnaryTests_1pln0ct">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uk1182">
+          <text>"tiramisu_parfait"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_001iawp">
+        <inputEntry id="UnaryTests_12j8q2t">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ul9za7">
+          <text>"coffee_coral"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1vkt2vq">
+        <inputEntry id="UnaryTests_1pkxf0n">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mlrr37">
+          <text>"sponge_cake"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1kd7kyp">
+        <inputEntry id="UnaryTests_17fu9rn">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0kdcokp">
+          <text>"alchermes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_05oa9ih">
+        <inputEntry id="UnaryTests_01d4q1v">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0rmjqm8">
+          <text>"custard"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1if9fm1">
+        <inputEntry id="UnaryTests_0swhtr5">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tx7421">
+          <text>"chocolate_macaron"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_101tz2n">
+        <inputEntry id="UnaryTests_0sk3vgm">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0liu7bb">
+          <text>"crisp_wafer"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0dqpc2x">
+        <inputEntry id="UnaryTests_15xzv92">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1016a9e">
+          <text>"zabaglione_chantilly_cream"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gywkk5">
+        <inputEntry id="UnaryTests_05wvfzi">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0r71sit">
+          <text>"fresh_raspberries"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ods20e">
+        <inputEntry id="UnaryTests_0te0ac7">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07zah9d">
+          <text>"anise_panna_cotta"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0cdgawg">
+        <inputEntry id="UnaryTests_0blbl7w">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0n9skvu">
+          <text>"pink_peppercorn_tuille"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0vta5o7">
+        <inputEntry id="UnaryTests_13nhc3d">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tax8e0">
+          <text>"caramelized_orange"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1cteg54">
+        <inputEntry id="UnaryTests_15ij8fz">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1693416">
+          <text>"fresh_fruit_salad"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1dt8vdw">
+        <inputEntry id="UnaryTests_1sh6de3">
+          <text>contains(lower case(?), "omnivore") or contains(lower case(?), "vegetarian") or contains(lower case(?), "vegan")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tjc3bo">
+          <text>"lemon_sorbet"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1h5g8oj">
+        <inputEntry id="UnaryTests_0pul3w1">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17p07rn">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1tykm6i" name="Reccomend meals">
+    <informationRequirement id="InformationRequirement_1tpnt0f">
+      <requiredDecision href="#Decision_0aet1u3" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1pz9wzv">
+      <requiredDecision href="#Decision_1gzvz4p" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0eaqkdh">
+      <requiredDecision href="#Decision_1s9612b" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1pragbo">
+      <requiredInput href="#InputData_1w1cbkm" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1w4ks9m" hitPolicy="COLLECT">
+      <input id="InputClause_1goelt4" label="Filtered_Ingredients_By_Allergens" biodi:width="352">
+        <inputExpression id="LiteralExpression_0h0ib52" typeRef="list">
+          <text>Filtered_Ingredients_By_Allergens</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_101c01w" label="Filtered_Ingredients_By_Diet" biodi:width="259">
+        <inputExpression id="LiteralExpression_0evi52y" typeRef="list">
+          <text>Filtered_Ingredients_By_Diet</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0jbives" label="Ingredient_List" biodi:width="372" camunda:inputVariable="Ingredient_List">
+        <inputExpression id="LiteralExpression_1ksojz8" typeRef="list">
+          <text>Ingredient_List</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1figpxn" label="ClientCaloricCategory">
+        <inputExpression id="LiteralExpression_0uxt94f" typeRef="string">
+          <text>ClientCaloricCategory</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0wb3s3k">
+          <text>"low","medium","high"</text>
+        </inputValues>
+      </input>
+      <output id="OutputClause_06vjzrt" label="Reccomended_Meals" name="Reccomended_Meals" typeRef="string" />
+      <output id="OutputClause_1695bm3" label="Menu_Category" name="Menu_Category" typeRef="string" />
+      <rule id="DecisionRule_0eu6nor">
+        <inputEntry id="UnaryTests_0wuw8dq">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "salame") and list contains(Filtered_Ingredients_By_Allergens, "gnocco_fritto")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17x05ps">
+          <text>list contains(Filtered_Ingredients_By_Diet, "salame") and list contains(Filtered_Ingredients_By_Diet, "gnocco_fritto")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dtis9h">
+          <text>(Ingredient_List[name="salame"].calories[1] + Ingredient_List[name="gnocco_fritto"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gkqzaf">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_132f3j9">
+          <text>"Platter of local cured meats served with Fried Gnocco"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0g2of9n">
+          <text>"Appetizers"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1g3w3wx">
+        <inputEntry id="UnaryTests_1f5od8t">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "salame") and list contains(Filtered_Ingredients_By_Allergens, "gnocco_fritto")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qrkgmu">
+          <text>list contains(Filtered_Ingredients_By_Diet, "salame") and list contains(Filtered_Ingredients_By_Diet, "gnocco_fritto")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_109tczl">
+          <text>(Ingredient_List[name="salame"].calories[1] + Ingredient_List[name="gnocco_fritto"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0i9w2ik">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gaerwa">
+          <text>"Platter of local cured meats served with Fried Gnocco"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0e41ezb">
+          <text>"Appetizers"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rznyzn">
+        <inputEntry id="UnaryTests_04nt9pb">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "salame") and list contains(Filtered_Ingredients_By_Allergens, "gnocco_fritto")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_105cp41">
+          <text>list contains(Filtered_Ingredients_By_Diet, "salame") and list contains(Filtered_Ingredients_By_Diet, "gnocco_fritto")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xbfml3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zsotxr">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12xhao6">
+          <text>"Platter of local cured meats served with Fried Gnocco"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0jf4eur">
+          <text>"Appetizers"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wcgyb9">
+        <inputEntry id="UnaryTests_0ulqeuh">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "beef") and list contains(Filtered_Ingredients_By_Allergens, "pickled_vegetables")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03pot3d">
+          <text>list contains(Filtered_Ingredients_By_Diet, "beef") and list contains(Filtered_Ingredients_By_Diet, "pickled_vegetables")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xvxxxy">
+          <text>(Ingredient_List[name="beef"].calories[1] + Ingredient_List[name="pickled_vegetables"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jbktje">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0n6rxb7">
+          <text>"Sirloin tartare with homemade pickled fresh vegetables"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06txj0v">
+          <text>"Appetizers"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wk8xgl">
+        <inputEntry id="UnaryTests_0orod90">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "beef") and list contains(Filtered_Ingredients_By_Allergens, "pickled_vegetables")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10x5ge9">
+          <text>list contains(Filtered_Ingredients_By_Diet, "beef") and list contains(Filtered_Ingredients_By_Diet, "pickled_vegetables")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1euxtm1">
+          <text>(Ingredient_List[name="beef"].calories[1] + Ingredient_List[name="pickled_vegetables"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18z7nd9">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02j86xp">
+          <text>"Sirloin tartare with homemade pickled fresh vegetables"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_121ihs5">
+          <text>"Appetizers"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1kf93nx">
+        <inputEntry id="UnaryTests_0zy70pp">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "beef") and list contains(Filtered_Ingredients_By_Allergens, "pickled_vegetables")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_055y38b">
+          <text>list contains(Filtered_Ingredients_By_Diet, "beef") and list contains(Filtered_Ingredients_By_Diet, "pickled_vegetables")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06lihf3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0833ht8">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01maydt">
+          <text>"Sirloin tartare with homemade pickled fresh vegetables"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_095r16y">
+          <text>"Appetizers"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1lk6yzz">
+        <inputEntry id="UnaryTests_0v9im65">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "spinach") and list contains(Filtered_Ingredients_By_Allergens, "parmesan_cheese") and list contains(Filtered_Ingredients_By_Allergens, "mullet_roe")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tqnpxq">
+          <text>list contains(Filtered_Ingredients_By_Diet, "spinach") and list contains(Filtered_Ingredients_By_Diet, "parmesan_cheese") and list contains(Filtered_Ingredients_By_Diet, "mullet_roe")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wx56oi">
+          <text>(Ingredient_List[name="spinach"].calories[1] + Ingredient_List[name="parmesan_cheese"].calories[1] + Ingredient_List[name="mullet_roe"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pmldot">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0i2k71o">
+          <text>"Spinach flan on Parmigiano Reggiano cream with mullet roe"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0r4oiit">
+          <text>"Appetizers"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0jcap74">
+        <inputEntry id="UnaryTests_0n4bu45">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "spinach") and list contains(Filtered_Ingredients_By_Allergens, "parmesan_cheese") and list contains(Filtered_Ingredients_By_Allergens, "mullet_roe")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oj3yqh">
+          <text>list contains(Filtered_Ingredients_By_Diet, "spinach") and list contains(Filtered_Ingredients_By_Diet, "parmesan_cheese") and list contains(Filtered_Ingredients_By_Diet, "mullet_roe")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rr8iax">
+          <text>(Ingredient_List[name="spinach"].calories[1] + Ingredient_List[name="parmesan_cheese"].calories[1] + Ingredient_List[name="mullet_roe"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03fnzsp">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1k539jp">
+          <text>"Spinach flan on Parmigiano Reggiano cream with mullet roe"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18muzav">
+          <text>"Appetizers"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1aubnqm">
+        <inputEntry id="UnaryTests_02aw0n6">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "spinach") and list contains(Filtered_Ingredients_By_Allergens, "parmesan_cheese") and list contains(Filtered_Ingredients_By_Allergens, "mullet_roe")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0c6zuie">
+          <text>list contains(Filtered_Ingredients_By_Diet, "spinach") and list contains(Filtered_Ingredients_By_Diet, "parmesan_cheese") and list contains(Filtered_Ingredients_By_Diet, "mullet_roe")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jamehv">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1te1ltp">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0grioxl">
+          <text>"Spinach flan on Parmigiano Reggiano cream with mullet roe"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03j5gs4">
+          <text>"Appetizers"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0r2a5i4">
+        <inputEntry id="UnaryTests_1cu83dp">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "octopus") and list contains(Filtered_Ingredients_By_Allergens, "olives") and list contains(Filtered_Ingredients_By_Allergens, "tomato_gazpacho") and list contains(Filtered_Ingredients_By_Allergens, "potato_chips")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zke9ln">
+          <text>list contains(Filtered_Ingredients_By_Diet, "octopus") and list contains(Filtered_Ingredients_By_Diet, "olives") and list contains(Filtered_Ingredients_By_Diet, "tomato_gazpacho") and list contains(Filtered_Ingredients_By_Diet, "potato_chips")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04qi7mw">
+          <text>(Ingredient_List[name="octopus"].calories[1] + Ingredient_List[name="olives"].calories[1] + Ingredient_List[name="tomato_gazpacho"].calories[1] + Ingredient_List[name="potato_chips"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mkjzuh">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jv5iin">
+          <text>"Grilled octopus on olive taggiasca soil with fresh tomato gazpacho and crispy potato chips"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18bzwcz">
+          <text>"Appetizers"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0cail4a">
+        <inputEntry id="UnaryTests_1c54kxa">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "octopus") and list contains(Filtered_Ingredients_By_Allergens, "olives") and list contains(Filtered_Ingredients_By_Allergens, "tomato_gazpacho") and list contains(Filtered_Ingredients_By_Allergens, "potato_chips")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ty3xad">
+          <text>list contains(Filtered_Ingredients_By_Diet, "octopus") and list contains(Filtered_Ingredients_By_Diet, "olives") and list contains(Filtered_Ingredients_By_Diet, "tomato_gazpacho") and list contains(Filtered_Ingredients_By_Diet, "potato_chips")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ecferv">
+          <text>(Ingredient_List[name="octopus"].calories[1] + Ingredient_List[name="olives"].calories[1] + Ingredient_List[name="tomato_gazpacho"].calories[1] + Ingredient_List[name="potato_chips"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_016viev">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wngyb7">
+          <text>"Grilled octopus on olive taggiasca soil with fresh tomato gazpacho and crispy potato chips"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0bnpszr">
+          <text>"Appetizers"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hu05gs">
+        <inputEntry id="UnaryTests_1ggigzt">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "octopus") and list contains(Filtered_Ingredients_By_Allergens, "olives") and list contains(Filtered_Ingredients_By_Allergens, "tomato_gazpacho") and list contains(Filtered_Ingredients_By_Allergens, "potato_chips")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dfil0v">
+          <text>list contains(Filtered_Ingredients_By_Diet, "octopus") and list contains(Filtered_Ingredients_By_Diet, "olives") and list contains(Filtered_Ingredients_By_Diet, "tomato_gazpacho") and list contains(Filtered_Ingredients_By_Diet, "potato_chips")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18iiiyr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cqkoff">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_03am70j">
+          <text>"Grilled octopus on olive taggiasca soil with fresh tomato gazpacho and crispy potato chips"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0p0wr5f">
+          <text>"Appetizers"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1to620x">
+        <inputEntry id="UnaryTests_18gte8g">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "chickpeas") and list contains(Filtered_Ingredients_By_Allergens, "asparagus") and list contains(Filtered_Ingredients_By_Allergens, "cherry_tomatoes") and list contains(Filtered_Ingredients_By_Allergens, "olive_oil")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zzjoaa">
+          <text>list contains(Filtered_Ingredients_By_Diet, "chickpeas") and list contains(Filtered_Ingredients_By_Diet, "asparagus") and list contains(Filtered_Ingredients_By_Diet, "cherry_tomatoes") and list contains(Filtered_Ingredients_By_Diet, "olive_oil")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_188ysb2">
+          <text>(Ingredient_List[name="chickpeas"].calories[1] + Ingredient_List[name="asparagus"].calories[1] + Ingredient_List[name="cherry_tomatoes"].calories[1] + Ingredient_List[name="olive_oil"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0onw0cu">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_160etle">
+          <text>"Chickpea hummus with sautéed asparagus, confit cherry tomatoes and basil oil"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1oa9my0">
+          <text>"Appetizers"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0jlixjs">
+        <inputEntry id="UnaryTests_14sspox">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "chickpeas") and list contains(Filtered_Ingredients_By_Allergens, "asparagus") and list contains(Filtered_Ingredients_By_Allergens, "cherry_tomatoes") and list contains(Filtered_Ingredients_By_Allergens, "olive_oil")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tyylts">
+          <text>list contains(Filtered_Ingredients_By_Diet, "chickpeas") and list contains(Filtered_Ingredients_By_Diet, "asparagus") and list contains(Filtered_Ingredients_By_Diet, "cherry_tomatoes") and list contains(Filtered_Ingredients_By_Diet, "olive_oil")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0h4k2dx">
+          <text>(Ingredient_List[name="chickpeas"].calories[1] + Ingredient_List[name="asparagus"].calories[1] + Ingredient_List[name="cherry_tomatoes"].calories[1] + Ingredient_List[name="olive_oil"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ir8f31">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0doqqse">
+          <text>"Chickpea hummus with sautéed asparagus, confit cherry tomatoes and basil oil"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1a32edg">
+          <text>"Appetizers"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_14gyox6">
+        <inputEntry id="UnaryTests_0x8a3u7">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "chickpeas") and list contains(Filtered_Ingredients_By_Allergens, "asparagus") and list contains(Filtered_Ingredients_By_Allergens, "cherry_tomatoes") and list contains(Filtered_Ingredients_By_Allergens, "olive_oil")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0h1xryo">
+          <text>list contains(Filtered_Ingredients_By_Diet, "chickpeas") and list contains(Filtered_Ingredients_By_Diet, "asparagus") and list contains(Filtered_Ingredients_By_Diet, "cherry_tomatoes") and list contains(Filtered_Ingredients_By_Diet, "olive_oil")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1d1krz0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_152ewpt">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19scagw">
+          <text>"Chickpea hummus with sautéed asparagus, confit cherry tomatoes and basil oil"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zhnv8b">
+          <text>"Appetizers"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_11m2803">
+        <inputEntry id="UnaryTests_1fzw7gl">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "burrata_cheese") and list contains(Filtered_Ingredients_By_Allergens, "salad") and list contains(Filtered_Ingredients_By_Allergens, "tomato_coral") and list contains(Filtered_Ingredients_By_Allergens, "caramelized_onion")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04ij7zf">
+          <text>list contains(Filtered_Ingredients_By_Diet, "burrata_cheese") and list contains(Filtered_Ingredients_By_Diet, "salad") and list contains(Filtered_Ingredients_By_Diet, "tomato_coral") and list contains(Filtered_Ingredients_By_Diet, "caramelized_onion")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mu9ih9">
+          <text>(Ingredient_List[name="burrata_cheese"].calories[1] + Ingredient_List[name="salad"].calories[1] + Ingredient_List[name="tomato_coral"].calories[1] + Ingredient_List[name="caramelized_onion"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ki2a4g">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jlaao3">
+          <text>"Apulian burrata on a bed of fresh salad with tomato coral and caramelized onion"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hrou3l">
+          <text>"Appetizers"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_13n8aen">
+        <inputEntry id="UnaryTests_0mmmkz0">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "burrata_cheese") and list contains(Filtered_Ingredients_By_Allergens, "salad") and list contains(Filtered_Ingredients_By_Allergens, "tomato_coral") and list contains(Filtered_Ingredients_By_Allergens, "caramelized_onion")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1blw47n">
+          <text>list contains(Filtered_Ingredients_By_Diet, "burrata_cheese") and list contains(Filtered_Ingredients_By_Diet, "salad") and list contains(Filtered_Ingredients_By_Diet, "tomato_coral") and list contains(Filtered_Ingredients_By_Diet, "caramelized_onion")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cke17y">
+          <text>(Ingredient_List[name="burrata_cheese"].calories[1] + Ingredient_List[name="salad"].calories[1] + Ingredient_List[name="tomato_coral"].calories[1] + Ingredient_List[name="caramelized_onion"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_194y532">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gdrmta">
+          <text>"Apulian burrata on a bed of fresh salad with tomato coral and caramelized onion"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15f70so">
+          <text>"Appetizers"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_050grvq">
+        <inputEntry id="UnaryTests_0rwdjui">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "burrata_cheese") and list contains(Filtered_Ingredients_By_Allergens, "salad") and list contains(Filtered_Ingredients_By_Allergens, "tomato_coral") and list contains(Filtered_Ingredients_By_Allergens, "caramelized_onion")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ynosn2">
+          <text>list contains(Filtered_Ingredients_By_Diet, "burrata_cheese") and list contains(Filtered_Ingredients_By_Diet, "salad") and list contains(Filtered_Ingredients_By_Diet, "tomato_coral") and list contains(Filtered_Ingredients_By_Diet, "caramelized_onion")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0trvjsh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17z0tih">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04v5tng">
+          <text>"Apulian burrata on a bed of fresh salad with tomato coral and caramelized onion"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1oaxb60">
+          <text>"Appetizers"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1axtd6p">
+        <inputEntry id="UnaryTests_065p101">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "tortellini") and list contains(Filtered_Ingredients_By_Allergens, "meat_broth")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0y34u5z">
+          <text>list contains(Filtered_Ingredients_By_Diet, "tortellini") and list contains(Filtered_Ingredients_By_Diet, "meat_broth")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rks990">
+          <text>(Ingredient_List[name="tortellini"].calories[1] + Ingredient_List[name="meat_broth"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ohq2cw">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0i99j42">
+          <text>"Homemade tortellini in meat broth"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_018g59a">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fsqs8r">
+        <inputEntry id="UnaryTests_15wt0lg">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "tortellini") and list contains(Filtered_Ingredients_By_Allergens, "meat_broth")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1joed6f">
+          <text>list contains(Filtered_Ingredients_By_Diet, "tortellini") and list contains(Filtered_Ingredients_By_Diet, "meat_broth")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lz4iy8">
+          <text>(Ingredient_List[name="tortellini"].calories[1] + Ingredient_List[name="meat_broth"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_165pg03">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cyh7ho">
+          <text>"Homemade tortellini in meat broth"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yra1tr">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15hyaz8">
+        <inputEntry id="UnaryTests_0anjqjk">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "tortellini") and list contains(Filtered_Ingredients_By_Allergens, "meat_broth")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1878yud">
+          <text>list contains(Filtered_Ingredients_By_Diet, "tortellini") and list contains(Filtered_Ingredients_By_Diet, "meat_broth")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pgesdg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0m2d6c4">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01zkui3">
+          <text>"Homemade tortellini in meat broth"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16ltw84">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10w3rq8">
+        <inputEntry id="UnaryTests_1m1dnot">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "ricotta_cheese") and list contains(Filtered_Ingredients_By_Allergens, "spinach") and list contains(Filtered_Ingredients_By_Allergens, "butter") and list contains(Filtered_Ingredients_By_Allergens, "sage")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0esy2cr">
+          <text>list contains(Filtered_Ingredients_By_Diet, "ricotta_cheese") and list contains(Filtered_Ingredients_By_Diet, "spinach") and list contains(Filtered_Ingredients_By_Diet, "butter") and list contains(Filtered_Ingredients_By_Diet, "sage")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07a18w3">
+          <text>(Ingredient_List[name="ricotta_cheese"].calories[1] + Ingredient_List[name="spinach"].calories[1] + Ingredient_List[name="butter"].calories[1] + Ingredient_List[name="sage"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jsz4s1">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_067cyi2">
+          <text>"Ricotta and spinach tortelli with butter and sage"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0u1l46a">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0i1528v">
+        <inputEntry id="UnaryTests_0v336gc">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "ricotta_cheese") and list contains(Filtered_Ingredients_By_Allergens, "spinach") and list contains(Filtered_Ingredients_By_Allergens, "butter") and list contains(Filtered_Ingredients_By_Allergens, "sage")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ga33m6">
+          <text>list contains(Filtered_Ingredients_By_Diet, "ricotta_cheese") and list contains(Filtered_Ingredients_By_Diet, "spinach") and list contains(Filtered_Ingredients_By_Diet, "butter") and list contains(Filtered_Ingredients_By_Diet, "sage")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zbbnl0">
+          <text>(Ingredient_List[name="ricotta_cheese"].calories[1] + Ingredient_List[name="spinach"].calories[1] + Ingredient_List[name="butter"].calories[1] + Ingredient_List[name="sage"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gzwsu5">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0lutlur">
+          <text>"Ricotta and spinach tortelli with butter and sage"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1h42cey">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gow4zf">
+        <inputEntry id="UnaryTests_1nimw8z">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "ricotta_cheese") and list contains(Filtered_Ingredients_By_Allergens, "spinach") and list contains(Filtered_Ingredients_By_Allergens, "butter") and list contains(Filtered_Ingredients_By_Allergens, "sage")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lchuyu">
+          <text>list contains(Filtered_Ingredients_By_Diet, "ricotta_cheese") and list contains(Filtered_Ingredients_By_Diet, "spinach") and list contains(Filtered_Ingredients_By_Diet, "butter") and list contains(Filtered_Ingredients_By_Diet, "sage")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08pln50">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01ctj49">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ptuega">
+          <text>"Ricotta and spinach tortelli with butter and sage"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19i6t7q">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1o073ld">
+        <inputEntry id="UnaryTests_1apha7q">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "rice") and list contains(Filtered_Ingredients_By_Allergens, "balsamic_vinegar")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0id69gz">
+          <text>list contains(Filtered_Ingredients_By_Diet, "rice") and list contains(Filtered_Ingredients_By_Diet, "balsamic_vinegar")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ameyk0">
+          <text>(Ingredient_List[name="rice"].calories[1] + Ingredient_List[name="balsamic_vinegar"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lx1x4d">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0f2u2pk">
+          <text>"Black risotto with Modena IGP balsamic vinegar"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1eqyu1p">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1a7s661">
+        <inputEntry id="UnaryTests_1aoggbk">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "rice") and list contains(Filtered_Ingredients_By_Allergens, "balsamic_vinegar")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wmavvf">
+          <text>list contains(Filtered_Ingredients_By_Diet, "rice") and list contains(Filtered_Ingredients_By_Diet, "balsamic_vinegar")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f8hkox">
+          <text>(Ingredient_List[name="rice"].calories[1] + Ingredient_List[name="balsamic_vinegar"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f4we76">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_040wxi0">
+          <text>"Black risotto with Modena IGP balsamic vinegar"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vib8dl">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_14kvtob">
+        <inputEntry id="UnaryTests_0a58mt3">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "rice") and list contains(Filtered_Ingredients_By_Allergens, "balsamic_vinegar")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zusd3r">
+          <text>list contains(Filtered_Ingredients_By_Diet, "rice") and list contains(Filtered_Ingredients_By_Diet, "balsamic_vinegar")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0d8g1bc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15e3w1j">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09pfdmr">
+          <text>"Black risotto with Modena IGP balsamic vinegar"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0szbz19">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0m3p19h">
+        <inputEntry id="UnaryTests_1plha91">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "egg_tagliatelle") and list contains(Filtered_Ingredients_By_Allergens, "beef_ragu")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14l5mgi">
+          <text>list contains(Filtered_Ingredients_By_Diet, "egg_tagliatelle") and list contains(Filtered_Ingredients_By_Diet, "beef_ragu")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cjrpw0">
+          <text>(Ingredient_List[name="egg_tagliatelle"].calories[1] + Ingredient_List[name="beef_ragu"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xgcjqj">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0l0zfup">
+          <text>"100 yolk tagliatelle with hand-cut beef ragu"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0niyfqm">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0fj9ob0">
+        <inputEntry id="UnaryTests_1e3i3oz">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "egg_tagliatelle") and list contains(Filtered_Ingredients_By_Allergens, "beef_ragu")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19ovonq">
+          <text>list contains(Filtered_Ingredients_By_Diet, "egg_tagliatelle") and list contains(Filtered_Ingredients_By_Diet, "beef_ragu")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rp0prn">
+          <text>(Ingredient_List[name="egg_tagliatelle"].calories[1] + Ingredient_List[name="beef_ragu"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ezpn7c">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0yxwhp0">
+          <text>"100 yolk tagliatelle with hand-cut beef ragu"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1dovs97">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1p0osdn">
+        <inputEntry id="UnaryTests_1nxnn0p">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "egg_tagliatelle") and list contains(Filtered_Ingredients_By_Allergens, "beef_ragu")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0foreas">
+          <text>list contains(Filtered_Ingredients_By_Diet, "egg_tagliatelle") and list contains(Filtered_Ingredients_By_Diet, "beef_ragu")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1bwmlf0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ig0l01">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_11s1tni">
+          <text>"100 yolk tagliatelle with hand-cut beef ragu"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wtqty7">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12ke3x0">
+        <inputEntry id="UnaryTests_16pg92p">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "mezze_maniche_pasta") and list contains(Filtered_Ingredients_By_Allergens, "arugula_pesto") and list contains(Filtered_Ingredients_By_Allergens, "stracciatella_cheese") and list contains(Filtered_Ingredients_By_Allergens, "cherry_tomatoes") and list contains(Filtered_Ingredients_By_Allergens, "toasted_almonds")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kc1j9b">
+          <text>list contains(Filtered_Ingredients_By_Diet, "mezze_maniche_pasta") and list contains(Filtered_Ingredients_By_Diet, "arugula_pesto") and list contains(Filtered_Ingredients_By_Diet, "stracciatella_cheese") and list contains(Filtered_Ingredients_By_Diet, "cherry_tomatoes") and list contains(Filtered_Ingredients_By_Diet, "toasted_almonds")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1r2ugmk">
+          <text>(Ingredient_List[name="mezze_maniche_pasta"].calories[1] + Ingredient_List[name="arugula_pesto"].calories[1] + Ingredient_List[name="stracciatella_cheese"].calories[1] + Ingredient_List[name="toasted_almonds"].calories[1]+ Ingredient_List[name="cherry_tomatoes"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1q7ztfj">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_03vqcrp">
+          <text>"Mezze maniche pasta with arugula pesto, stracciatella, confit cherry tomatoes, and toasted almonds"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09l8ex8">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17xpp9p">
+        <inputEntry id="UnaryTests_17cidw5">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "mezze_maniche_pasta") and list contains(Filtered_Ingredients_By_Allergens, "arugula_pesto") and list contains(Filtered_Ingredients_By_Allergens, "stracciatella_cheese") and list contains(Filtered_Ingredients_By_Allergens, "cherry_tomatoes") and list contains(Filtered_Ingredients_By_Allergens, "toasted_almonds")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dcwrby">
+          <text>list contains(Filtered_Ingredients_By_Diet, "mezze_maniche_pasta") and list contains(Filtered_Ingredients_By_Diet, "arugula_pesto") and list contains(Filtered_Ingredients_By_Diet, "stracciatella_cheese") and list contains(Filtered_Ingredients_By_Diet, "cherry_tomatoes") and list contains(Filtered_Ingredients_By_Diet, "toasted_almonds")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dqlanh">
+          <text>(Ingredient_List[name="mezze_maniche_pasta"].calories[1] + Ingredient_List[name="arugula_pesto"].calories[1] + Ingredient_List[name="stracciatella_cheese"].calories[1] + Ingredient_List[name="toasted_almonds"].calories[1]+ Ingredient_List[name="cherry_tomatoes"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1t3tpui">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vk17sl">
+          <text>"Mezze maniche pasta with arugula pesto, stracciatella, confit cherry tomatoes, and toasted almonds"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0js4hbs">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1g7ks0c">
+        <inputEntry id="UnaryTests_0gkt4v9">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "mezze_maniche_pasta") and list contains(Filtered_Ingredients_By_Allergens, "arugula_pesto") and list contains(Filtered_Ingredients_By_Allergens, "stracciatella_cheese") and list contains(Filtered_Ingredients_By_Allergens, "cherry_tomatoes") and list contains(Filtered_Ingredients_By_Allergens, "toasted_almonds")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bmr8nz">
+          <text>list contains(Filtered_Ingredients_By_Diet, "mezze_maniche_pasta") and list contains(Filtered_Ingredients_By_Diet, "arugula_pesto") and list contains(Filtered_Ingredients_By_Diet, "stracciatella_cheese") and list contains(Filtered_Ingredients_By_Diet, "cherry_tomatoes") and list contains(Filtered_Ingredients_By_Diet, "toasted_almonds")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0o9dumt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1w64lnf">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0id4s4f">
+          <text>"Mezze maniche pasta with arugula pesto, stracciatella, confit cherry tomatoes, and toasted almonds"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0p4phdg">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0nthkno">
+        <inputEntry id="UnaryTests_122y4vo">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "spaghetti") and list contains(Filtered_Ingredients_By_Allergens, "pecorino_cheese") and list contains(Filtered_Ingredients_By_Allergens, "mullet_roe") and list contains(Filtered_Ingredients_By_Allergens, "red_shrimp_tartare") and list contains(Filtered_Ingredients_By_Allergens, "lime")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0n3sfve">
+          <text>list contains(Filtered_Ingredients_By_Diet, "spaghetti") and list contains(Filtered_Ingredients_By_Diet, "pecorino_cheese") and list contains(Filtered_Ingredients_By_Diet, "mullet_roe") and list contains(Filtered_Ingredients_By_Diet, "red_shrimp_tartare") and list contains(Filtered_Ingredients_By_Diet, "lime")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1d1n751">
+          <text>(Ingredient_List[name="spaghetti"].calories[1] + Ingredient_List[name="pecorino_cheese"].calories[1] + Ingredient_List[name="mullet_roe"].calories[1] + Ingredient_List[name="red_shrimp_tartare"].calories[1]+ Ingredient_List[name="lime"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rsehnm">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ayq4fb">
+          <text>"Spaghetti with pecorino and pepper, mullet roe, red shrimp tartare, and lime"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0p65n90">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1i03e4a">
+        <inputEntry id="UnaryTests_1rzawaz">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "spaghetti") and list contains(Filtered_Ingredients_By_Allergens, "pecorino_cheese") and list contains(Filtered_Ingredients_By_Allergens, "mullet_roe") and list contains(Filtered_Ingredients_By_Allergens, "red_shrimp_tartare") and list contains(Filtered_Ingredients_By_Allergens, "lime")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1m128cz">
+          <text>list contains(Filtered_Ingredients_By_Diet, "spaghetti") and list contains(Filtered_Ingredients_By_Diet, "pecorino_cheese") and list contains(Filtered_Ingredients_By_Diet, "mullet_roe") and list contains(Filtered_Ingredients_By_Diet, "red_shrimp_tartare") and list contains(Filtered_Ingredients_By_Diet, "lime")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jomfij">
+          <text>(Ingredient_List[name="spaghetti"].calories[1] + Ingredient_List[name="pecorino_cheese"].calories[1] + Ingredient_List[name="mullet_roe"].calories[1] + Ingredient_List[name="red_shrimp_tartare"].calories[1]+ Ingredient_List[name="lime"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_101zry8">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0chw4hn">
+          <text>"Spaghetti with pecorino and pepper, mullet roe, red shrimp tartare, and lime"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0x35v2a">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00h49eu">
+        <inputEntry id="UnaryTests_09h6f09">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "spaghetti") and list contains(Filtered_Ingredients_By_Allergens, "pecorino_cheese") and list contains(Filtered_Ingredients_By_Allergens, "mullet_roe") and list contains(Filtered_Ingredients_By_Allergens, "red_shrimp_tartare") and list contains(Filtered_Ingredients_By_Allergens, "lime")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ooh14e">
+          <text>list contains(Filtered_Ingredients_By_Diet, "spaghetti") and list contains(Filtered_Ingredients_By_Diet, "pecorino_cheese") and list contains(Filtered_Ingredients_By_Diet, "mullet_roe") and list contains(Filtered_Ingredients_By_Diet, "red_shrimp_tartare") and list contains(Filtered_Ingredients_By_Diet, "lime")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lc1f7e">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xs0zli">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cc8acd">
+          <text>"Spaghetti with pecorino and pepper, mullet roe, red shrimp tartare, and lime"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0pwnvu5">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_11iiev2">
+        <inputEntry id="UnaryTests_1gu12x9">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "sea_bream_ravioli") and list contains(Filtered_Ingredients_By_Allergens, "squid_ink_sauce") and list contains(Filtered_Ingredients_By_Allergens, "basil_cream") and list contains(Filtered_Ingredients_By_Allergens, "parmesan_cream") and list contains(Filtered_Ingredients_By_Allergens, "candied_lemon")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pgk44g">
+          <text>list contains(Filtered_Ingredients_By_Diet, "sea_bream_ravioli") and list contains(Filtered_Ingredients_By_Diet, "squid_ink_sauce") and list contains(Filtered_Ingredients_By_Diet, "basil_cream") and list contains(Filtered_Ingredients_By_Diet, "parmesan_cream") and list contains(Filtered_Ingredients_By_Diet, "candied_lemon")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0d431ex">
+          <text>(Ingredient_List[name="sea_bream_ravioli"].calories[1] + Ingredient_List[name="squid_ink_sauce"].calories[1] + Ingredient_List[name="basil_cream"].calories[1] + Ingredient_List[name="parmesan_cream"].calories[1]+ Ingredient_List[name="candied_lemon"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02lu56l">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vlpi8p">
+          <text>"Sea bream ravioli with squid ink sauce, basil cream, parmesan cream, and candied lemon"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0jou648">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0aco6sl">
+        <inputEntry id="UnaryTests_1lj4x3q">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "sea_bream_ravioli") and list contains(Filtered_Ingredients_By_Allergens, "squid_ink_sauce") and list contains(Filtered_Ingredients_By_Allergens, "basil_cream") and list contains(Filtered_Ingredients_By_Allergens, "parmesan_cream") and list contains(Filtered_Ingredients_By_Allergens, "candied_lemon")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0b1goyc">
+          <text>list contains(Filtered_Ingredients_By_Diet, "sea_bream_ravioli") and list contains(Filtered_Ingredients_By_Diet, "squid_ink_sauce") and list contains(Filtered_Ingredients_By_Diet, "basil_cream") and list contains(Filtered_Ingredients_By_Diet, "parmesan_cream") and list contains(Filtered_Ingredients_By_Diet, "candied_lemon")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fcoawi">
+          <text>(Ingredient_List[name="sea_bream_ravioli"].calories[1] + Ingredient_List[name="squid_ink_sauce"].calories[1] + Ingredient_List[name="basil_cream"].calories[1] + Ingredient_List[name="parmesan_cream"].calories[1]+ Ingredient_List[name="candied_lemon"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gbrxs1">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1muoeno">
+          <text>"Sea bream ravioli with squid ink sauce, basil cream, parmesan cream, and candied lemon"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1dnw0bb">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07gawh6">
+        <inputEntry id="UnaryTests_1ho6mbv">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "sea_bream_ravioli") and list contains(Filtered_Ingredients_By_Allergens, "squid_ink_sauce") and list contains(Filtered_Ingredients_By_Allergens, "basil_cream") and list contains(Filtered_Ingredients_By_Allergens, "parmesan_cream") and list contains(Filtered_Ingredients_By_Allergens, "candied_lemon")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18fnanp">
+          <text>list contains(Filtered_Ingredients_By_Diet, "sea_bream_ravioli") and list contains(Filtered_Ingredients_By_Diet, "squid_ink_sauce") and list contains(Filtered_Ingredients_By_Diet, "basil_cream") and list contains(Filtered_Ingredients_By_Diet, "parmesan_cream") and list contains(Filtered_Ingredients_By_Diet, "candied_lemon")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wfirvz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1n50eg3">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0r8mj4f">
+          <text>"Sea bream ravioli with squid ink sauce, basil cream, parmesan cream, and candied lemon"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1saedym">
+          <text>"Main Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ihgirm">
+        <inputEntry id="UnaryTests_1t3ysxq">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "beef_filet") and list contains(Filtered_Ingredients_By_Allergens, "balsamic_vinegar") and list contains(Filtered_Ingredients_By_Allergens, "borettane_onions")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0s0iu6q">
+          <text>list contains(Filtered_Ingredients_By_Diet, "beef_filet") and list contains(Filtered_Ingredients_By_Diet, "balsamic_vinegar") and list contains(Filtered_Ingredients_By_Diet, "borettane_onions")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kii6aa">
+          <text>(Ingredient_List[name="beef_filet"].calories[1] + Ingredient_List[name="balsamic_vinegar"].calories[1] + Ingredient_List[name="borettane_onions"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0t49ypd">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gaby8x">
+          <text>"Balsamic vinegar beef filet with Borettane onions"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bo671p">
+          <text>"Second Meals"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1p3wga1">
+        <inputEntry id="UnaryTests_1sfskav">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "beef_filet") and list contains(Filtered_Ingredients_By_Allergens, "balsamic_vinegar") and list contains(Filtered_Ingredients_By_Allergens, "borettane_onions")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mvwaxo">
+          <text>list contains(Filtered_Ingredients_By_Diet, "beef_filet") and list contains(Filtered_Ingredients_By_Diet, "balsamic_vinegar") and list contains(Filtered_Ingredients_By_Diet, "borettane_onions")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1irdnqn">
+          <text>(Ingredient_List[name="beef_filet"].calories[1] + Ingredient_List[name="balsamic_vinegar"].calories[1] + Ingredient_List[name="borettane_onions"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0y7dgr7">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_11zsmqa">
+          <text>"Balsamic vinegar beef filet with Borettane onions"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jtpd2i">
+          <text>"Second Meals"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1lga20f">
+        <inputEntry id="UnaryTests_0289h34">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "beef_filet") and list contains(Filtered_Ingredients_By_Allergens, "balsamic_vinegar") and list contains(Filtered_Ingredients_By_Allergens, "borettane_onions")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wucoq9">
+          <text>list contains(Filtered_Ingredients_By_Diet, "beef_filet") and list contains(Filtered_Ingredients_By_Diet, "balsamic_vinegar") and list contains(Filtered_Ingredients_By_Diet, "borettane_onions")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13yf19c">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ptrxk0">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1yuk69g">
+          <text>"Balsamic vinegar beef filet with Borettane onions"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1e3nelm">
+          <text>"Second Meals"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jad5kg">
+        <inputEntry id="UnaryTests_124vsjq">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "tuna") and list contains(Filtered_Ingredients_By_Allergens, "teriyaki_sauce") and list contains(Filtered_Ingredients_By_Allergens, "seasonal_vegetables") and list contains(Filtered_Ingredients_By_Allergens, "guacamole")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00hj7va">
+          <text>list contains(Filtered_Ingredients_By_Diet, "tuna") and list contains(Filtered_Ingredients_By_Diet, "teriyaki_sauce") and list contains(Filtered_Ingredients_By_Diet, "seasonal_vegetables") and list contains(Filtered_Ingredients_By_Diet, "guacamole")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yb1aey">
+          <text>(Ingredient_List[name="tuna"].calories[1] + Ingredient_List[name="teriyaki_sauce"].calories[1] + Ingredient_List[name="seasonal_vegetables"].calories[1] + Ingredient_List[name="guacamole"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0n9hwx6">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0d1zlvw">
+          <text>"Tuna tataki with teriyaki sauce, seasonal vegetables, and guacamole"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1n8zrq6">
+          <text>"Second Meals"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ty0mj8">
+        <inputEntry id="UnaryTests_1hy451r">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "tuna") and list contains(Filtered_Ingredients_By_Allergens, "teriyaki_sauce") and list contains(Filtered_Ingredients_By_Allergens, "seasonal_vegetables") and list contains(Filtered_Ingredients_By_Allergens, "guacamole")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_003pqgp">
+          <text>list contains(Filtered_Ingredients_By_Diet, "tuna") and list contains(Filtered_Ingredients_By_Diet, "teriyaki_sauce") and list contains(Filtered_Ingredients_By_Diet, "seasonal_vegetables") and list contains(Filtered_Ingredients_By_Diet, "guacamole")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10msiqx">
+          <text>(Ingredient_List[name="tuna"].calories[1] + Ingredient_List[name="teriyaki_sauce"].calories[1] + Ingredient_List[name="seasonal_vegetables"].calories[1] + Ingredient_List[name="guacamole"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jk4onb">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01gc6kj">
+          <text>"Tuna tataki with teriyaki sauce, seasonal vegetables, and guacamole"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16tb21o">
+          <text>"Second Meals"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_073w0mm">
+        <inputEntry id="UnaryTests_1yd2dig">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "tuna") and list contains(Filtered_Ingredients_By_Allergens, "teriyaki_sauce") and list contains(Filtered_Ingredients_By_Allergens, "seasonal_vegetables") and list contains(Filtered_Ingredients_By_Allergens, "guacamole")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1r4sx87">
+          <text>list contains(Filtered_Ingredients_By_Diet, "tuna") and list contains(Filtered_Ingredients_By_Diet, "teriyaki_sauce") and list contains(Filtered_Ingredients_By_Diet, "seasonal_vegetables") and list contains(Filtered_Ingredients_By_Diet, "guacamole")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1h7jqnn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_020zvj3">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1n93n4i">
+          <text>"Tuna tataki with teriyaki sauce, seasonal vegetables, and guacamole"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09fpghj">
+          <text>"Second Meals"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17an9mz">
+        <inputEntry id="UnaryTests_0owvn2w">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "eggplant") and list contains(Filtered_Ingredients_By_Allergens, "parmesan_cream") and list contains(Filtered_Ingredients_By_Allergens, "toasted_almonds") and list contains(Filtered_Ingredients_By_Allergens, "parsley_oil")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0f06fah">
+          <text>list contains(Filtered_Ingredients_By_Diet, "eggplant") and list contains(Filtered_Ingredients_By_Diet, "parmesan_cream") and list contains(Filtered_Ingredients_By_Diet, "toasted_almonds") and list contains(Filtered_Ingredients_By_Diet, "parsley_oil")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wxv7tm">
+          <text>(Ingredient_List[name="eggplant"].calories[1] + Ingredient_List[name="parmesan_cream"].calories[1] + Ingredient_List[name="toasted_almonds"].calories[1] + Ingredient_List[name="parsley_oil"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1onqufk">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ic398g">
+          <text>"Stuffed eggplant with parmesan cream, toasted almonds, and parsley oil"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0i5gap3">
+          <text>"Second Meals"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09y8tbk">
+        <inputEntry id="UnaryTests_00vthrq">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "eggplant") and list contains(Filtered_Ingredients_By_Allergens, "parmesan_cream") and list contains(Filtered_Ingredients_By_Allergens, "toasted_almonds") and list contains(Filtered_Ingredients_By_Allergens, "parsley_oil")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0g1g1uv">
+          <text>list contains(Filtered_Ingredients_By_Diet, "eggplant") and list contains(Filtered_Ingredients_By_Diet, "parmesan_cream") and list contains(Filtered_Ingredients_By_Diet, "toasted_almonds") and list contains(Filtered_Ingredients_By_Diet, "parsley_oil")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mi6d0s">
+          <text>(Ingredient_List[name="eggplant"].calories[1] + Ingredient_List[name="parmesan_cream"].calories[1] + Ingredient_List[name="toasted_almonds"].calories[1] + Ingredient_List[name="parsley_oil"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_126y3ck">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0hvwi8p">
+          <text>"Stuffed eggplant with parmesan cream, toasted almonds, and parsley oil"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0m7tbwq">
+          <text>"Second Meals"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0jvrc3r">
+        <inputEntry id="UnaryTests_0log0mh">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "eggplant") and list contains(Filtered_Ingredients_By_Allergens, "parmesan_cream") and list contains(Filtered_Ingredients_By_Allergens, "toasted_almonds") and list contains(Filtered_Ingredients_By_Allergens, "parsley_oil")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tnf92x">
+          <text>list contains(Filtered_Ingredients_By_Diet, "eggplant") and list contains(Filtered_Ingredients_By_Diet, "parmesan_cream") and list contains(Filtered_Ingredients_By_Diet, "toasted_almonds") and list contains(Filtered_Ingredients_By_Diet, "parsley_oil")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14q7maz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gaaz2x">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06j55o1">
+          <text>"Stuffed eggplant with parmesan cream, toasted almonds, and parsley oil"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ow0sze">
+          <text>"Second Meals"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ec3cut">
+        <inputEntry id="UnaryTests_0zweiyv">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "chicken") and list contains(Filtered_Ingredients_By_Allergens, "fontina_cheese") and list contains(Filtered_Ingredients_By_Allergens, "spinach") and list contains(Filtered_Ingredients_By_Allergens, "pancetta") and list contains(Filtered_Ingredients_By_Allergens, "potato_cream")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01ki65e">
+          <text>list contains(Filtered_Ingredients_By_Diet, "chicken") and list contains(Filtered_Ingredients_By_Diet, "fontina_cheese") and list contains(Filtered_Ingredients_By_Diet, "spinach") and list contains(Filtered_Ingredients_By_Diet, "pancetta") and list contains(Filtered_Ingredients_By_Diet, "potato_cream")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19nhlg5">
+          <text>(Ingredient_List[name="chicken"].calories[1] + Ingredient_List[name="fontina_cheese"].calories[1] + Ingredient_List[name="spinach"].calories[1] + Ingredient_List[name="pancetta"].calories[1]+ Ingredient_List[name="potato_cream"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18qmons">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ath2u1">
+          <text>"Rustic chicken stuffed with fontina, spinach, and pancetta on potato cream"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0l2td1a">
+          <text>"Second Meals"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1i59a5e">
+        <inputEntry id="UnaryTests_0tw9xf1">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "chicken") and list contains(Filtered_Ingredients_By_Allergens, "fontina_cheese") and list contains(Filtered_Ingredients_By_Allergens, "spinach") and list contains(Filtered_Ingredients_By_Allergens, "pancetta") and list contains(Filtered_Ingredients_By_Allergens, "potato_cream")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ivf9by">
+          <text>list contains(Filtered_Ingredients_By_Diet, "chicken") and list contains(Filtered_Ingredients_By_Diet, "fontina_cheese") and list contains(Filtered_Ingredients_By_Diet, "spinach") and list contains(Filtered_Ingredients_By_Diet, "pancetta") and list contains(Filtered_Ingredients_By_Diet, "potato_cream")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nvo2gn">
+          <text>(Ingredient_List[name="chicken"].calories[1] + Ingredient_List[name="fontina_cheese"].calories[1] + Ingredient_List[name="spinach"].calories[1] + Ingredient_List[name="pancetta"].calories[1]+ Ingredient_List[name="potato_cream"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ro6z1l">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_094go2t">
+          <text>"Rustic chicken stuffed with fontina, spinach, and pancetta on potato cream"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1qgel2h">
+          <text>"Second Meals"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rdrlpt">
+        <inputEntry id="UnaryTests_00o5ek8">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "chicken") and list contains(Filtered_Ingredients_By_Allergens, "fontina_cheese") and list contains(Filtered_Ingredients_By_Allergens, "spinach") and list contains(Filtered_Ingredients_By_Allergens, "pancetta") and list contains(Filtered_Ingredients_By_Allergens, "potato_cream")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vpporh">
+          <text>list contains(Filtered_Ingredients_By_Diet, "chicken") and list contains(Filtered_Ingredients_By_Diet, "fontina_cheese") and list contains(Filtered_Ingredients_By_Diet, "spinach") and list contains(Filtered_Ingredients_By_Diet, "pancetta") and list contains(Filtered_Ingredients_By_Diet, "potato_cream")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lr2yo6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1exfo26">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0y5j56b">
+          <text>"Rustic chicken stuffed with fontina, spinach, and pancetta on potato cream"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1b74kjg">
+          <text>"Second Meals"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1oyx13v">
+        <inputEntry id="UnaryTests_08zfv6d">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "quail") and list contains(Filtered_Ingredients_By_Allergens, "cointreau_demi_glace") and list contains(Filtered_Ingredients_By_Allergens, "potato_millefeuille") and list contains(Filtered_Ingredients_By_Allergens, "asparagus")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1t0o0z0">
+          <text>list contains(Filtered_Ingredients_By_Diet, "quail") and list contains(Filtered_Ingredients_By_Diet, "cointreau_demi_glace") and list contains(Filtered_Ingredients_By_Diet, "potato_millefeuille") and list contains(Filtered_Ingredients_By_Diet, "asparagus")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1p9ffxu">
+          <text>(Ingredient_List[name="quail"].calories[1] + Ingredient_List[name="cointreau_demi_glace"].calories[1] + Ingredient_List[name="potato_millefeuille"].calories[1] + Ingredient_List[name="asparagus"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0c84vxj">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sihv8i">
+          <text>"Stuffed quail with Cointreau demi glacé, potato millefeuille, and asparagus in two consistencies"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_160rmr5">
+          <text>"Second Meals"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0h2kiml">
+        <inputEntry id="UnaryTests_09iao2o">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "quail") and list contains(Filtered_Ingredients_By_Allergens, "cointreau_demi_glace") and list contains(Filtered_Ingredients_By_Allergens, "potato_millefeuille") and list contains(Filtered_Ingredients_By_Allergens, "asparagus")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bmbwbv">
+          <text>list contains(Filtered_Ingredients_By_Diet, "quail") and list contains(Filtered_Ingredients_By_Diet, "cointreau_demi_glace") and list contains(Filtered_Ingredients_By_Diet, "potato_millefeuille") and list contains(Filtered_Ingredients_By_Diet, "asparagus")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15uxpus">
+          <text>(Ingredient_List[name="quail"].calories[1] + Ingredient_List[name="cointreau_demi_glace"].calories[1] + Ingredient_List[name="potato_millefeuille"].calories[1] + Ingredient_List[name="asparagus"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1e54n0z">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13pffy6">
+          <text>"Stuffed quail with Cointreau demi glacé, potato millefeuille, and asparagus in two consistencies"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03j00f0">
+          <text>"Second Meals"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0rmhuvn">
+        <inputEntry id="UnaryTests_1mvkh9t">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "quail") and list contains(Filtered_Ingredients_By_Allergens, "cointreau_demi_glace") and list contains(Filtered_Ingredients_By_Allergens, "potato_millefeuille") and list contains(Filtered_Ingredients_By_Allergens, "asparagus")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pqdiz9">
+          <text>list contains(Filtered_Ingredients_By_Diet, "quail") and list contains(Filtered_Ingredients_By_Diet, "cointreau_demi_glace") and list contains(Filtered_Ingredients_By_Diet, "potato_millefeuille") and list contains(Filtered_Ingredients_By_Diet, "asparagus")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07kt7eo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0brov5f">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1058l8t">
+          <text>"Stuffed quail with Cointreau demi glacé, potato millefeuille, and asparagus in two consistencies"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vt0rdz">
+          <text>"Second Meals"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_056tjm3">
+        <inputEntry id="UnaryTests_067xotb">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "beef_cheek") and list contains(Filtered_Ingredients_By_Allergens, "horseradish_potato_puree") and list contains(Filtered_Ingredients_By_Allergens, "sauteed_agretti")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05p3ncp">
+          <text>list contains(Filtered_Ingredients_By_Diet, "beef_cheek") and list contains(Filtered_Ingredients_By_Diet, "horseradish_potato_puree") and list contains(Filtered_Ingredients_By_Diet, "sauteed_agretti")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_174rjnu">
+          <text>(Ingredient_List[name="beef_cheek"].calories[1] + Ingredient_List[name="horseradish_potato_puree"].calories[1] + Ingredient_List[name="sauteed_agretti"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13suyyi">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0vufvv1">
+          <text>"Beef cheek with horseradish potato puree and sautéed agretti"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1dsbi9l">
+          <text>"Second Meals"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0107msp">
+        <inputEntry id="UnaryTests_03zzopf">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "beef_cheek") and list contains(Filtered_Ingredients_By_Allergens, "horseradish_potato_puree") and list contains(Filtered_Ingredients_By_Allergens, "sauteed_agretti")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01xxurh">
+          <text>list contains(Filtered_Ingredients_By_Diet, "beef_cheek") and list contains(Filtered_Ingredients_By_Diet, "horseradish_potato_puree") and list contains(Filtered_Ingredients_By_Diet, "sauteed_agretti")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_142hrbd">
+          <text>(Ingredient_List[name="beef_cheek"].calories[1] + Ingredient_List[name="horseradish_potato_puree"].calories[1] + Ingredient_List[name="sauteed_agretti"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oqagut">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1g200rd">
+          <text>"Beef cheek with horseradish potato puree and sautéed agretti"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16dbhr8">
+          <text>"Second Meals"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1aod07h">
+        <inputEntry id="UnaryTests_09isfla">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "beef_cheek") and list contains(Filtered_Ingredients_By_Allergens, "horseradish_potato_puree") and list contains(Filtered_Ingredients_By_Allergens, "sauteed_agretti")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0a47drl">
+          <text>list contains(Filtered_Ingredients_By_Diet, "beef_cheek") and list contains(Filtered_Ingredients_By_Diet, "horseradish_potato_puree") and list contains(Filtered_Ingredients_By_Diet, "sauteed_agretti")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1p791cb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1b9orvt">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1slbvuv">
+          <text>"Beef cheek with horseradish potato puree and sautéed agretti"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0uxnc04">
+          <text>"Second Meals"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_033y43v">
+        <inputEntry id="UnaryTests_11blc0x">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "salad")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xsbaxo">
+          <text>list contains(Filtered_Ingredients_By_Diet, "salad")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nqthnz">
+          <text>(Ingredient_List[name="salad"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vlqk3i">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1f41moa">
+          <text>"Mixed Salad"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vtraqc">
+          <text>"Side Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0s292eq">
+        <inputEntry id="UnaryTests_0sxfv8n">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "salad")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vh1nth">
+          <text>list contains(Filtered_Ingredients_By_Diet, "salad")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1j44dzg">
+          <text>(Ingredient_List[name="salad"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hl8qki">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qrq6qk">
+          <text>"Mixed Salad"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ynv18c">
+          <text>"Side Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_05rvgk0">
+        <inputEntry id="UnaryTests_0rh731f">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "salad")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rzbo1w">
+          <text>list contains(Filtered_Ingredients_By_Diet, "salad")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18qkwqy">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00a99gf">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1c3dhov">
+          <text>"Mixed Salad"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0pp3cff">
+          <text>"Side Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0iyskqe">
+        <inputEntry id="UnaryTests_0wa28iw">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "vegetables")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_018rouo">
+          <text>list contains(Filtered_Ingredients_By_Diet, "vegetables")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dl0qbn">
+          <text>(Ingredient_List[name="vegetables"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ikddwk">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0p1ur90">
+          <text>"Grilled Vegetables"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xxzxdi">
+          <text>"Side Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ry647k">
+        <inputEntry id="UnaryTests_1ge5xe6">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "vegetables")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f0smvl">
+          <text>list contains(Filtered_Ingredients_By_Diet, "vegetables")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ywtsdp">
+          <text>(Ingredient_List[name="vegetables"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1c5dnnw">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0c8mop6">
+          <text>"Grilled Vegetables"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1j6imfh">
+          <text>"Side Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bk5oz6">
+        <inputEntry id="UnaryTests_1p2mjsy">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "vegetables")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0usza63">
+          <text>list contains(Filtered_Ingredients_By_Diet, "vegetables")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1m4tj94">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12rf9og">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sdz7s2">
+          <text>"Grilled Vegetables"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0n0ls4w">
+          <text>"Side Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0pl6cse">
+        <inputEntry id="UnaryTests_011qqvo">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "baked_potatoes")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05z8s6g">
+          <text>list contains(Filtered_Ingredients_By_Diet, "baked_potatoes")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0i1wqe9">
+          <text>(Ingredient_List[name="baked_potatoes"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1h86kt3">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wdevpt">
+          <text>"Baked Potatoes"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xp3h6l">
+          <text>"Side Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fywd12">
+        <inputEntry id="UnaryTests_1eruqpk">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "baked_potatoes")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1x1h9l5">
+          <text>list contains(Filtered_Ingredients_By_Diet, "baked_potatoes")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uis4zh">
+          <text>(Ingredient_List[name="baked_potatoes"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1klwkex">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qklxbd">
+          <text>"Baked Potatoes"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ljul1h">
+          <text>"Side Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1drlywa">
+        <inputEntry id="UnaryTests_00llr03">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "baked_potatoes")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07cxp25">
+          <text>list contains(Filtered_Ingredients_By_Diet, "baked_potatoes")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1b2ny1w">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vfq3vs">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0itatja">
+          <text>"Baked Potatoes"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01hle2y">
+          <text>"Side Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15kpx8j">
+        <inputEntry id="UnaryTests_1690tqw">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "spinach") and list contains(Filtered_Ingredients_By_Allergens, "garlic_oil")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1benr99">
+          <text>list contains(Filtered_Ingredients_By_Diet, "spinach") and list contains(Filtered_Ingredients_By_Diet, "garlic_oil")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1j5t5lz">
+          <text>(Ingredient_List[name="spinach"].calories[1] + Ingredient_List[name="garlic_oil"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ogkvsc">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0t2eq57">
+          <text>"Steamed spinach with garlic oil"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_030fswj">
+          <text>"Side Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1yeiob8">
+        <inputEntry id="UnaryTests_1xs0n8y">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "spinach") and list contains(Filtered_Ingredients_By_Allergens, "garlic_oil")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0eytgvz">
+          <text>list contains(Filtered_Ingredients_By_Diet, "spinach") and list contains(Filtered_Ingredients_By_Diet, "garlic_oil")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0odltp9">
+          <text>(Ingredient_List[name="spinach"].calories[1] + Ingredient_List[name="garlic_oil"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qdgyoy">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qfjdlr">
+          <text>"Steamed spinach with garlic oil"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_041usfe">
+          <text>"Side Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xq10su">
+        <inputEntry id="UnaryTests_1wg4cdw">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "spinach") and list contains(Filtered_Ingredients_By_Allergens, "garlic_oil")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dmusz2">
+          <text>list contains(Filtered_Ingredients_By_Diet, "spinach") and list contains(Filtered_Ingredients_By_Diet, "garlic_oil")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_118ift5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01c9tiy">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0n0wksc">
+          <text>"Steamed spinach with garlic oil"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1m8t1ce">
+          <text>"Side Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hhl2of">
+        <inputEntry id="UnaryTests_0nyrk3y">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "fried_potatoes")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1eohfgy">
+          <text>list contains(Filtered_Ingredients_By_Diet, "fried_potatoes")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15nj3j4">
+          <text>(Ingredient_List[name="fried_potatoes"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nykt27">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0znxqkc">
+          <text>"Fried Potatoes"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xe3cv1">
+          <text>"Side Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0yrlpt2">
+        <inputEntry id="UnaryTests_079mq2e">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "fried_potatoes")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dgeijm">
+          <text>list contains(Filtered_Ingredients_By_Diet, "fried_potatoes")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pxkbwl">
+          <text>(Ingredient_List[name="fried_potatoes"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00trkhu">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0pjic9o">
+          <text>"Fried Potatoes"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0i8dxjg">
+          <text>"Side Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1edyi4v">
+        <inputEntry id="UnaryTests_0cu2sz1">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "fried_potatoes")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_135b3kn">
+          <text>list contains(Filtered_Ingredients_By_Diet, "fried_potatoes")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uz5lu2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_010muc6">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nl19m3">
+          <text>"Fried Potatoes"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07xaeof">
+          <text>"Side Dishes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12f7jga">
+        <inputEntry id="UnaryTests_00aueak">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "barozzi_cake") and list contains(Filtered_Ingredients_By_Allergens, "mascarpone_cream")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rwo3qd">
+          <text>list contains(Filtered_Ingredients_By_Diet, "barozzi_cake") and list contains(Filtered_Ingredients_By_Diet, "mascarpone_cream")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rqezld">
+          <text>(Ingredient_List[name="barozzi_cake"].calories[1] + Ingredient_List[name="mascarpone_cream"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_036m1v1">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01jx6pu">
+          <text>"Original Barozzi Cake from Gollini pastry shop in Vignola with mascarpone cream"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nkoj0t">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04f47pu">
+        <inputEntry id="UnaryTests_0oy63l6">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "barozzi_cake") and list contains(Filtered_Ingredients_By_Allergens, "mascarpone_cream")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jtfzgi">
+          <text>list contains(Filtered_Ingredients_By_Diet, "barozzi_cake") and list contains(Filtered_Ingredients_By_Diet, "mascarpone_cream")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pvthn7">
+          <text>(Ingredient_List[name="barozzi_cake"].calories[1] + Ingredient_List[name="mascarpone_cream"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wfdbzc">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0mndbny">
+          <text>"Original Barozzi Cake from Gollini pastry shop in Vignola with mascarpone cream"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ytxtdf">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1w01yuu">
+        <inputEntry id="UnaryTests_1btz9rr">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "barozzi_cake") and list contains(Filtered_Ingredients_By_Allergens, "mascarpone_cream")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1on3a5e">
+          <text>list contains(Filtered_Ingredients_By_Diet, "barozzi_cake") and list contains(Filtered_Ingredients_By_Diet, "mascarpone_cream")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rnj2n3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0b07iu9">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13zsrii">
+          <text>"Original Barozzi Cake from Gollini pastry shop in Vignola with mascarpone cream"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gt3utw">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fnwlwi">
+        <inputEntry id="UnaryTests_0e1csrp">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "tiramisu_parfait") and list contains(Filtered_Ingredients_By_Allergens, "coffee_coral")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_098lks2">
+          <text>list contains(Filtered_Ingredients_By_Diet, "tiramisu_parfait") and list contains(Filtered_Ingredients_By_Diet, "coffee_coral")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1twlrr4">
+          <text>(Ingredient_List[name="tiramisu_parfait"].calories[1] + Ingredient_List[name="coffee_coral"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mw4gu7">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0a7fxot">
+          <text>"Tiramisu parfait with coffee coral"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17y5zsa">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fck1dc">
+        <inputEntry id="UnaryTests_1n14l1a">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "tiramisu_parfait") and list contains(Filtered_Ingredients_By_Allergens, "coffee_coral")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08zhxeb">
+          <text>list contains(Filtered_Ingredients_By_Diet, "tiramisu_parfait") and list contains(Filtered_Ingredients_By_Diet, "coffee_coral")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f1jnx1">
+          <text>(Ingredient_List[name="tiramisu_parfait"].calories[1] + Ingredient_List[name="coffee_coral"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ovcdpz">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1nidlgn">
+          <text>"Tiramisu parfait with coffee coral"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07vsj8t">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1qjr082">
+        <inputEntry id="UnaryTests_1f455g6">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "tiramisu_parfait") and list contains(Filtered_Ingredients_By_Allergens, "coffee_coral")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03d52lr">
+          <text>list contains(Filtered_Ingredients_By_Diet, "tiramisu_parfait") and list contains(Filtered_Ingredients_By_Diet, "coffee_coral")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jyxp9a">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10qpza7">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06iltm6">
+          <text>"Tiramisu parfait with coffee coral"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14zmoiz">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1n9zrn6">
+        <inputEntry id="UnaryTests_1ulq0ob">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "sponge_cake") and list contains(Filtered_Ingredients_By_Allergens, "alchermes") and list contains(Filtered_Ingredients_By_Allergens, "custard") and list contains(Filtered_Ingredients_By_Allergens, "chocolate_macaron")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02pfskv">
+          <text>list contains(Filtered_Ingredients_By_Diet, "sponge_cake") and list contains(Filtered_Ingredients_By_Diet, "alchermes") and list contains(Filtered_Ingredients_By_Diet, "custard") and list contains(Filtered_Ingredients_By_Diet, "chocolate_macaron")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0r019vk">
+          <text>(Ingredient_List[name="sponge_cake"].calories[1] + Ingredient_List[name="alchermes"].calories[1] + Ingredient_List[name="custard"].calories[1] + Ingredient_List[name="chocolate_macaron"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1d6ec1p">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wkjclo">
+          <text>"Zuppa inglese 2.0: sponge cake with Alchermes, custard, and chocolate macaron"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_113zk2n">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_079sw1u">
+        <inputEntry id="UnaryTests_10pjx3e">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "sponge_cake") and list contains(Filtered_Ingredients_By_Allergens, "alchermes") and list contains(Filtered_Ingredients_By_Allergens, "custard") and list contains(Filtered_Ingredients_By_Allergens, "chocolate_macaron")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lsbun9">
+          <text>list contains(Filtered_Ingredients_By_Diet, "sponge_cake") and list contains(Filtered_Ingredients_By_Diet, "alchermes") and list contains(Filtered_Ingredients_By_Diet, "custard") and list contains(Filtered_Ingredients_By_Diet, "chocolate_macaron")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17sq27q">
+          <text>(Ingredient_List[name="sponge_cake"].calories[1] + Ingredient_List[name="alchermes"].calories[1] + Ingredient_List[name="custard"].calories[1] + Ingredient_List[name="chocolate_macaron"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zxi591">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1h3u232">
+          <text>"Zuppa inglese 2.0: sponge cake with Alchermes, custard, and chocolate macaron"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0oga35c">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1qhlzu2">
+        <inputEntry id="UnaryTests_17vz49b">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "sponge_cake") and list contains(Filtered_Ingredients_By_Allergens, "alchermes") and list contains(Filtered_Ingredients_By_Allergens, "custard") and list contains(Filtered_Ingredients_By_Allergens, "chocolate_macaron")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xxwam0">
+          <text>list contains(Filtered_Ingredients_By_Diet, "sponge_cake") and list contains(Filtered_Ingredients_By_Diet, "alchermes") and list contains(Filtered_Ingredients_By_Diet, "custard") and list contains(Filtered_Ingredients_By_Diet, "chocolate_macaron")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04l5hgb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wywiep">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07ahct3">
+          <text>"Zuppa inglese 2.0: sponge cake with Alchermes, custard, and chocolate macaron"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ux19y7">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02zpdew">
+        <inputEntry id="UnaryTests_1azsb4d">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "crisp_wafer") and list contains(Filtered_Ingredients_By_Allergens, "zabaglione_chantilly_cream") and list contains(Filtered_Ingredients_By_Allergens, "fresh_raspberries")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jlaxrb">
+          <text>list contains(Filtered_Ingredients_By_Diet, "crisp_wafer") and list contains(Filtered_Ingredients_By_Diet, "zabaglione_chantilly_cream") and list contains(Filtered_Ingredients_By_Diet, "fresh_raspberries")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0r5o8th">
+          <text>(Ingredient_List[name="crisp_wafer"].calories[1] + Ingredient_List[name="zabaglione_chantilly_cream"].calories[1] + Ingredient_List[name="fresh_raspberries"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00g8j72">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_061ozqa">
+          <text>"Crisp wafer from Fiumalbo Pettorelli with zabaglione chantilly cream and fresh raspberries"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0o1pzni">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0k6zmm5">
+        <inputEntry id="UnaryTests_0n4fgdm">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "crisp_wafer") and list contains(Filtered_Ingredients_By_Allergens, "zabaglione_chantilly_cream") and list contains(Filtered_Ingredients_By_Allergens, "fresh_raspberries")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yotkfs">
+          <text>list contains(Filtered_Ingredients_By_Diet, "crisp_wafer") and list contains(Filtered_Ingredients_By_Diet, "zabaglione_chantilly_cream") and list contains(Filtered_Ingredients_By_Diet, "fresh_raspberries")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0klz717">
+          <text>(Ingredient_List[name="crisp_wafer"].calories[1] + Ingredient_List[name="zabaglione_chantilly_cream"].calories[1] + Ingredient_List[name="fresh_raspberries"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zj50yv">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wim6ke">
+          <text>"Crisp wafer from Fiumalbo Pettorelli with zabaglione chantilly cream and fresh raspberries"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1do4hjs">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1t8wuiw">
+        <inputEntry id="UnaryTests_0sd45vq">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "crisp_wafer") and list contains(Filtered_Ingredients_By_Allergens, "zabaglione_chantilly_cream") and list contains(Filtered_Ingredients_By_Allergens, "fresh_raspberries")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19s4h1f">
+          <text>list contains(Filtered_Ingredients_By_Diet, "crisp_wafer") and list contains(Filtered_Ingredients_By_Diet, "zabaglione_chantilly_cream") and list contains(Filtered_Ingredients_By_Diet, "fresh_raspberries")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1awd7g2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sd3snu">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qsobfj">
+          <text>"Crisp wafer from Fiumalbo Pettorelli with zabaglione chantilly cream and fresh raspberries"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dhm19f">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kk7bh7">
+        <inputEntry id="UnaryTests_1uty1hs">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "anise_panna_cotta") and list contains(Filtered_Ingredients_By_Allergens, "pink_peppercorn_tuille") and list contains(Filtered_Ingredients_By_Allergens, "caramelized_orange")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dhrtsz">
+          <text>list contains(Filtered_Ingredients_By_Diet, "anise_panna_cotta") and list contains(Filtered_Ingredients_By_Diet, "pink_peppercorn_tuille") and list contains(Filtered_Ingredients_By_Diet, "caramelized_orange")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03uenke">
+          <text>(Ingredient_List[name="anise_panna_cotta"].calories[1] + Ingredient_List[name="pink_peppercorn_tuille"].calories[1] + Ingredient_List[name="caramelized_orange"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0u4a1n8">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09m5qo4">
+          <text>"Anise panna cotta with pink peppercorn tuille and caramelized orange"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0clqj50">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_11fhyt7">
+        <inputEntry id="UnaryTests_010waa0">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "anise_panna_cotta") and list contains(Filtered_Ingredients_By_Allergens, "pink_peppercorn_tuille") and list contains(Filtered_Ingredients_By_Allergens, "caramelized_orange")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09mqbv3">
+          <text>list contains(Filtered_Ingredients_By_Diet, "anise_panna_cotta") and list contains(Filtered_Ingredients_By_Diet, "pink_peppercorn_tuille") and list contains(Filtered_Ingredients_By_Diet, "caramelized_orange")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0y8lotn">
+          <text>(Ingredient_List[name="anise_panna_cotta"].calories[1] + Ingredient_List[name="pink_peppercorn_tuille"].calories[1] + Ingredient_List[name="caramelized_orange"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_047xx3y">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gwal31">
+          <text>"Anise panna cotta with pink peppercorn tuille and caramelized orange"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1k793ao">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_188jhhm">
+        <inputEntry id="UnaryTests_0923uq3">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "anise_panna_cotta") and list contains(Filtered_Ingredients_By_Allergens, "pink_peppercorn_tuille") and list contains(Filtered_Ingredients_By_Allergens, "caramelized_orange")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16dkfi6">
+          <text>list contains(Filtered_Ingredients_By_Diet, "anise_panna_cotta") and list contains(Filtered_Ingredients_By_Diet, "pink_peppercorn_tuille") and list contains(Filtered_Ingredients_By_Diet, "caramelized_orange")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xprt71">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vr5cmr">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1t1jx0o">
+          <text>"Anise panna cotta with pink peppercorn tuille and caramelized orange"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14idam3">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0u00qc0">
+        <inputEntry id="UnaryTests_0pxm5ym">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "fresh_fruit_salad")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06svqfu">
+          <text>list contains(Filtered_Ingredients_By_Diet, "fresh_fruit_salad")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yu264j">
+          <text>(Ingredient_List[name="fresh_fruit_salad"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jghyd0">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1xdctr0">
+          <text>"Fresh fruit salad"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ynthar">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1x88nk3">
+        <inputEntry id="UnaryTests_02wjob6">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "fresh_fruit_salad")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13m0u66">
+          <text>list contains(Filtered_Ingredients_By_Diet, "fresh_fruit_salad")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10hzo0h">
+          <text>(Ingredient_List[name="fresh_fruit_salad"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cclq3s">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1s8lach">
+          <text>"Fresh fruit salad"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0z6vb6u">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0c531xf">
+        <inputEntry id="UnaryTests_09smsye">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "fresh_fruit_salad")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1b84tv0">
+          <text>list contains(Filtered_Ingredients_By_Diet, "fresh_fruit_salad")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rsvrh5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_155eb6u">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0u2wxef">
+          <text>"Fresh fruit salad"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00o2b6q">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0y8vr5a">
+        <inputEntry id="UnaryTests_0w3gqz9">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "lemon_sorbet")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1uz78t4">
+          <text>list contains(Filtered_Ingredients_By_Diet, "lemon_sorbet")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1b0nj6l">
+          <text>(Ingredient_List[name="lemon_sorbet"].calories[1])&lt;=400</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1opbg29">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_031wbpa">
+          <text>"Lemon sorbet"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0tiiz2i">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_14egsqz">
+        <inputEntry id="UnaryTests_0uck0li">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "lemon_sorbet")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rjpm1t">
+          <text>list contains(Filtered_Ingredients_By_Diet, "lemon_sorbet")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ss0ncj">
+          <text>(Ingredient_List[name="lemon_sorbet"].calories[1])&lt;=900</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kp7b1k">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0eetb0v">
+          <text>"Lemon sorbet"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17oalzd">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xsx1n5">
+        <inputEntry id="UnaryTests_1klnx80">
+          <text>list contains(Filtered_Ingredients_By_Allergens, "lemon_sorbet")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01j8mm9">
+          <text>list contains(Filtered_Ingredients_By_Diet, "lemon_sorbet")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oaxupf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11e6uva">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1krmrwj">
+          <text>"Lemon sorbet"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kygsmf">
+          <text>"Desserts"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1w1cbkm" name="ClientCaloricCategory" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape id="DMNShape_0qxwbyf" dmnElementRef="Decision_1s9612b">
+        <dc:Bounds height="80" width="180" x="700" y="370" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_160vqwm" dmnElementRef="InputData_07ltp9n">
+        <dc:Bounds height="45" width="125" x="157" y="237" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_14rhhua" dmnElementRef="InputData_0c7ltpy">
+        <dc:Bounds height="45" width="125" x="157" y="98" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_044wal0" dmnElementRef="InformationRequirement_1r7wi0l">
+        <di:waypoint x="282" y="121" />
+        <di:waypoint x="330" y="121" />
+        <di:waypoint x="350" y="121" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_152hcer" dmnElementRef="Decision_0aet1u3">
+        <dc:Bounds height="80" width="180" x="350" y="81" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_08gfllf" dmnElementRef="InformationRequirement_0g8uly4">
+        <di:waypoint x="282" y="260" />
+        <di:waypoint x="330" y="260" />
+        <di:waypoint x="350" y="260" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1t8jmsm" dmnElementRef="Decision_1gzvz4p">
+        <dc:Bounds height="80" width="180" x="350" y="220" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_00no0dh" dmnElementRef="InformationRequirement_1tpnt0f">
+        <di:waypoint x="530" y="121" />
+        <di:waypoint x="680" y="168" />
+        <di:waypoint x="700" y="168" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0vdbggv" dmnElementRef="InformationRequirement_1pz9wzv">
+        <di:waypoint x="530" y="260" />
+        <di:waypoint x="680" y="194" />
+        <di:waypoint x="700" y="194" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0v6j381" dmnElementRef="Decision_1tykm6i">
+        <dc:Bounds height="80" width="180" x="700" y="141" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0p4wmu0" dmnElementRef="InformationRequirement_0eaqkdh">
+        <di:waypoint x="790" y="370" />
+        <di:waypoint x="790" y="241" />
+        <di:waypoint x="790" y="221" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0vfmd2b" dmnElementRef="InputData_1w1cbkm">
+        <dc:Bounds height="45" width="125" x="727" y="-3" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_126yd24" dmnElementRef="InformationRequirement_1pragbo">
+        <di:waypoint x="790" y="42" />
+        <di:waypoint x="790" y="121" />
+        <di:waypoint x="790" y="141" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
