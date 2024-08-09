@@ -7,25 +7,25 @@ PREFIX mod: <http://fhnw.ch/modelingEnvironment/ModelOntology#>
 PREFIX lo: <http://fhnw.ch/modelingEnvironment/LanguageOntology#>
 PREFIX md: <http://www.w3.org/ns/md#>
 
-SELECT ?itemName ?menuCaloricCategory ?personCaloricCategoryName ?allergen ?personAllergenName ?dietaryRestriction ?personDietaryPreferenceName
+SELECT ?mealName ?menuCaloricCategory ?personCaloricCategoryName ?allergen ?personAllergenName ?dietaryRestriction ?personDietaryPreferenceName
 WHERE {
   # Retrieve Fabio's caloric preference
   ?person rdf:type :Person .
   ?person :personHasName "Fabio" . # Specify the individual's name
-  mod:prepareReccomendations_7fa8523e-c878-4d25-a3ce-2ea4d4753921 lo:clientHasCaloricCategory ?personCaloricCategoryName.
+  mod:prepareReccomendations_827b32b6-de81-48a3-91e8-2d2f009fa22c lo:clientHasCaloricCategory ?personCaloricCategoryName.
 
   # Retrieve Fabio's dietary preference
-  mod:prepareReccomendations_7fa8523e-c878-4d25-a3ce-2ea4d4753921 lo:clientHasDietaryCategory ?personDietaryPreferenceName.
+  mod:prepareReccomendations_827b32b6-de81-48a3-91e8-2d2f009fa22c lo:clientHasDietaryCategory ?personDietaryPreferenceName.
 
   # Retrieve Fabio's allergens
   OPTIONAL {
-    mod:prepareReccomendations_7fa8523e-c878-4d25-a3ce-2ea4d4753921 lo:clientHasAllergen ?personAllergenName.
+    mod:prepareReccomendations_827b32b6-de81-48a3-91e8-2d2f009fa22c lo:clientHasAllergen ?personAllergenName.
   }
 
   # Find menu items with the same caloric preference
   ?menuItem rdf:type :MenuItem .
   ?menuItem :menuItemHasCaloricCategory ?menuCaloricCategory .
-  ?menuItem :menuItemHasName ?itemName .
+  ?menuItem :menuItemHasName ?mealName .
 
   OPTIONAL { ?menuItem :menuItemHasAllergen ?allergen . }
   OPTIONAL { ?menuItem :menuItemHasDietaryRestriction ?dietaryRestriction . }
@@ -50,4 +50,4 @@ WHERE {
     ?personAllergen :allergenHasName ?menuAllergenName .
   }
 }
-ORDER BY ?itemName
+ORDER BY ?mealName
