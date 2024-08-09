@@ -1,0 +1,53 @@
+PREFIX : <http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProject/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX bpaas: <http://ikm-group.ch/archimeo/bpaas#>
+PREFIX bpmn: <http://ikm-group.ch/archiMEO/BPMN#>
+PREFIX mod: <http://fhnw.ch/modelingEnvironment/ModelOntology#>
+PREFIX lo: <http://fhnw.ch/modelingEnvironment/LanguageOntology#>
+PREFIX md: <http://www.w3.org/ns/md#>
+
+SELECT ?itemName ?menuCaloricCategory ?personCaloricCategoryName ?allergen ?personAllergenName ?dietaryRestriction ?personDietaryPreferenceName
+WHERE {
+  # Retrieve Fabio's caloric preference
+  ?person rdf:type :Person .
+  ?person :personHasName "Fabio" . # Specify the individual's name
+  mod:prepareReccomendations_7fa8523e-c878-4d25-a3ce-2ea4d4753921 lo:clientHasCaloricCategory ?personCaloricCategoryName.
+
+  # Retrieve Fabio's dietary preference
+  mod:prepareReccomendations_7fa8523e-c878-4d25-a3ce-2ea4d4753921 lo:clientHasDietaryCategory ?personDietaryPreferenceName.
+
+  # Retrieve Fabio's allergens
+  OPTIONAL {
+    mod:prepareReccomendations_7fa8523e-c878-4d25-a3ce-2ea4d4753921 lo:clientHasAllergen ?personAllergenName.
+  }
+
+  # Find menu items with the same caloric preference
+  ?menuItem rdf:type :MenuItem .
+  ?menuItem :menuItemHasCaloricCategory ?menuCaloricCategory .
+  ?menuItem :menuItemHasName ?itemName .
+
+  OPTIONAL { ?menuItem :menuItemHasAllergen ?allergen . }
+  OPTIONAL { ?menuItem :menuItemHasDietaryRestriction ?dietaryRestriction . }
+  
+  # Caloric category filter
+  FILTER(
+    (?personCaloricCategoryName = "High" && (?menuCaloricCategory = "Low" || ?menuCaloricCategory = "Medium" || ?menuCaloricCategory = "High")) ||
+    (?personCaloricCategoryName = "Medium" && (?menuCaloricCategory = "Low" || ?menuCaloricCategory = "Medium")) ||
+    ?menuCaloricCategory = ?personCaloricCategoryName
+  )
+  
+  # Dietary preference filter
+  FILTER(
+    (?personDietaryPreferenceName = "Omnivore" && (?dietaryRestriction = "Omnivore" || !bound(?dietaryRestriction))) ||
+    ((?personDietaryPreferenceName = "Vegetarian" || ?personDietaryPreferenceName = "Vegan") && (!bound(?dietaryRestriction)))
+  )
+
+  # Allergen filter
+  FILTER NOT EXISTS {
+    ?menuItem :menuItemHasAllergen ?menuAllergenName .
+    ?person :personHasAllergens ?personAllergen .
+    ?personAllergen :allergenHasName ?menuAllergenName .
+  }
+}
+ORDER BY ?itemName
