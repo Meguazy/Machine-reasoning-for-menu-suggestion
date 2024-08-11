@@ -1,0 +1,10 @@
+## Check for allergens Rule
+MenuItem(?m) ^ menuItemHasFoodIngredient(?m, ?i) ^ foodIngredientHasAllergens(?i, ?allergen) ^ swrlb:notEqual(?allergen, "") -> menuItemHasAllergen(?m, ?allergen)
+## Check if the plate is omnivore
+MenuItem(?m) ^ menuItemHasFoodIngredient(?m, ?i) ^ foodIngredientHasDietaryCategory(?i, "Omnivore") -> menuItemHasDietaryRestriction(?m, "Omnivore")
+## High Caloric Category Rule
+MenuItem(?menuItem) ^ menuItemHasTotalCalories(?menuItem, ?calories) ^ swrlb:greaterThan(?calories, 900) -> menuItemHasCaloricCategory(?menuItem, "High")
+## Low Caloric Category Rule
+MenuItem(?menuItem) ^ menuItemHasTotalCalories(?menuItem, ?calories) ^ swrlb:lessThanOrEqual(?calories, 400) -> menuItemHasCaloricCategory(?menuItem, "Low")
+## Medium Caloric Category Rule
+MenuItem(?menuItem) ^ menuItemHasTotalCalories(?menuItem, ?calories) ^ swrlb:greaterThan(?calories, 400) ^ swrlb:lessThanOrEqual(?calories, 900) -> menuItemHasCaloricCategory(?menuItem, "Medium")
