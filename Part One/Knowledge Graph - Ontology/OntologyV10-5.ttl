@@ -637,6 +637,17 @@
           :foodIngredientHasName "Eggplant" .
 
 
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProject/Fabio
+:Fabio rdf:type owl:NamedIndividual ,
+                :Person ;
+       :personHasAllergens :Gluten ,
+                           :Lactose ;
+       :personHasCalorieLevel :Low ;
+       :personHasDietaryPreference :Vegetarian ;
+       :personIsClientOfRestaurant :Nero_Balsamico ;
+       :personHasName "Fabio" .
+
+
 ###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProject/First_Dish
 :First_Dish rdf:type owl:NamedIndividual ,
                      :MenuSection ;
@@ -1429,15 +1440,17 @@
                                                                             :menuItemHasTotalCalories "850"^^xsd:nonNegativeInteger .
 
 
-###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#Fabio
-:Fabio rdf:type owl:NamedIndividual ,
-                :Person ;
-       :personHasAllergens :Gluten ,
-                           :Lactose ;
-       :personHasCalorieLevel :Low ;
-       :personHasDietaryPreference :Vegetarian ;
-       :personIsClientOfRestaurant :Nero_Balsamico ;
-       :personHasName "Fabio" .
+###  http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#100_yolk_tagliatelle_with_hand_cut_beef_ragu
+<http://www.semanticweb.org/byjus/ontologies/2024/6/KebiProjectv2#100_yolk_tagliatelle_with_hand_cut_beef_ragu> rdf:type owl:NamedIndividual ,
+                                                                                                                         :MenuItem ;
+                                                                                                                :menuItemHasFoodIngredient :Beef_Ragu ,
+                                                                                                                                           :Egg_Tagliatelle ;
+                                                                                                                :menuItemHasAllergen "Egg" ,
+                                                                                                                                     "Gluten" ;
+                                                                                                                :menuItemHasCaloricCategory "Medium" ;
+                                                                                                                :menuItemHasDietaryRestriction "Omnivore" ;
+                                                                                                                :menuItemHasName "100 yolk tagliatelle with hand-cut beef ragu" ;
+                                                                                                                :menuItemHasTotalCalories "620"^^xsd:nonNegativeInteger .
 
 
 #################################################################
