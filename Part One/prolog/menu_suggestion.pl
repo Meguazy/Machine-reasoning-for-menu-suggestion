@@ -81,86 +81,86 @@ ingredient(baked_potatoes).
 ingredient(fried_potatoes).
 
 % Define the facts with ingredient, calories, allergens, and dietary restrictions
-ingredient_info(prosciutto_crudo, 250, [], [omnivore]).
-ingredient_info(coppa, 300, [], [omnivore]).
-ingredient_info(salame, 400, [], [omnivore]).
-ingredient_info(mortadella, 350, [lactose], [omnivore]).
-ingredient_info(gnocco_fritto, 300, [gluten], [vegan]).
-ingredient_info(fried_potatoes, 300, [], [vegan]).
+ingredient_info(prosciutto_crudo, 300, [], [omnivore]).
+ingredient_info(coppa, 400, [], [omnivore]).
+ingredient_info(salame, 450, [], [omnivore]).
+ingredient_info(mortadella, 310, [lactose], [omnivore]).
+ingredient_info(gnocco_fritto, 350, [gluten], [vegan]).
+ingredient_info(fried_potatoes, 312, [], [vegan]).
 ingredient_info(beef, 250, [], [omnivore]).
-ingredient_info(pickled_vegetables, 30, [], [vegan]).
+ingredient_info(pickled_vegetables, 20, [], [vegan]).
 ingredient_info(spinach, 23, [], [vegan]).
 ingredient_info(parmesan_cheese, 431, [lactose], [vegetarian]).
-ingredient_info(mullet_roe, 250, [], [omnivore]).
+ingredient_info(mullet_roe, 350, [], [omnivore]).
 ingredient_info(octopus, 82, [], [omnivore]).
-ingredient_info(olives, 115, [], [vegan]).
-ingredient_info(tomato_gazpacho, 20, [], [vegan]).
-ingredient_info(potato_chips, 150, [], [vegan]).
-ingredient_info(baked_potatoes, 20, [], [vegan]).
+ingredient_info(olives, 145, [], [vegan]).
+ingredient_info(tomato_gazpacho, 30, [], [vegan]).
+ingredient_info(potato_chips, 536, [], [vegan]).
+ingredient_info(baked_potatoes, 93, [], [vegan]).
 ingredient_info(chickpeas, 164, [], [vegan]).
 ingredient_info(asparagus, 20, [], [vegan]).
 ingredient_info(cherry_tomatoes, 18, [], [vegan]).
 ingredient_info(olive_oil, 884, [], [vegan]).
-ingredient_info(burrata_cheese, 300, [lactose], [vegetarian]).
+ingredient_info(burrata_cheese, 250, [lactose], [vegetarian]).
 ingredient_info(salad, 15, [], [vegan]).
-ingredient_info(tomato_coral, 20, [], [vegan]).
-ingredient_info(caramelized_onion, 40, [], [vegan]).
-ingredient_info(tortellini, 300, [gluten, egg], [vegan]).
-ingredient_info(meat_broth, 50, [], [omnivore]).
+ingredient_info(tomato_coral, 30, [], [vegan]).
+ingredient_info(caramelized_onion, 125, [], [vegan]).
+ingredient_info(tortellini, 370, [gluten, egg], [vegan]).
+ingredient_info(meat_broth, 25, [], [omnivore]).
 ingredient_info(ricotta_cheese, 174, [lactose], [vegetarian]).
 ingredient_info(butter, 717, [lactose], [vegetarian]).
-ingredient_info(sage, 30, [], [vegan]).
+ingredient_info(sage, 315, [], [vegan]).
 ingredient_info(rice, 130, [], [vegan]).
 ingredient_info(balsamic_vinegar, 88, [], [vegan]).
-ingredient_info(egg_tagliatelle, 350, [gluten, egg], [vegetarian]).
+ingredient_info(egg_tagliatelle, 370, [gluten, egg], [vegetarian]).
 ingredient_info(beef_ragu, 250, [], [omnivore]).
-ingredient_info(mezze_maniche_pasta, 350, [gluten], [vegan]).
-ingredient_info(arugula_pesto, 150, [nuts], [vegan]).
-ingredient_info(stracciatella_cheese, 300, [lactose], [vegetarian]).
+ingredient_info(mezze_maniche_pasta, 370, [gluten], [vegan]).
+ingredient_info(arugula_pesto, 450, [nuts], [vegan]).
+ingredient_info(stracciatella_cheese, 305, [lactose], [vegetarian]).
 ingredient_info(toasted_almonds, 576, [nuts], [vegan]).
-ingredient_info(spaghetti, 350, [gluten], [vegan]).
-ingredient_info(pecorino_cheese, 402, [lactose], [vegetarian]).
-ingredient_info(red_shrimp_tartare, 80, [], [omnivore]).
+ingredient_info(spaghetti, 371, [gluten], [vegan]).
+ingredient_info(pecorino_cheese, 387, [lactose], [vegetarian]).
+ingredient_info(red_shrimp_tartare, 120, [], [omnivore]).
 ingredient_info(lime, 30, [], [vegan]).
-ingredient_info(sea_bream_ravioli, 200, [gluten], [vegan]).
-ingredient_info(squid_ink_sauce, 60, [], [vegetarian]).
-ingredient_info(basil_cream, 50, [lactose], [vegetarian]).
-ingredient_info(parmesan_cream, 431, [lactose], [vegetarian]).
-ingredient_info(candied_lemon, 40, [], [vegan]).
-ingredient_info(beef_filet, 250, [], [omnivore]).
+ingredient_info(sea_bream_ravioli, 280, [gluten], [vegan]).
+ingredient_info(squid_ink_sauce, 120, [], [vegetarian]).
+ingredient_info(basil_cream, 250, [lactose], [vegetarian]).
+ingredient_info(parmesan_cream, 300, [lactose], [vegetarian]).
+ingredient_info(candied_lemon, 300, [], [vegan]).
+ingredient_info(beef_filet, 271, [], [omnivore]).
 ingredient_info(borettane_onions, 40, [], [ vegan]).
-ingredient_info(tuna, 130, [], [omnivore]).
+ingredient_info(tuna, 144, [], [omnivore]).
 ingredient_info(teriyaki_sauce, 89, [], [vegan]).
-ingredient_info(vegetables, 20, [], [vegan]).
+ingredient_info(vegetables, 40, [], [vegan]).
 ingredient_info(guacamole, 160, [], [vegan]).
 ingredient_info(eggplant, 25, [], [vegan]).
-ingredient_info(parsley_oil, 884, [], [vegan]).
-ingredient_info(chicken, 165, [], [omnivore]).
+ingredient_info(parsley_oil, 900, [], [vegan]).
+ingredient_info(chicken, 239, [], [omnivore]).
 ingredient_info(fontina_cheese, 389, [lactose], [vegetarian]).
-ingredient_info(pancetta, 393, [], [omnivore]).
-ingredient_info(potato_cream, 80, [lactose], [vegetarian]).
+ingredient_info(pancetta, 600, [], [omnivore]).
+ingredient_info(potato_cream, 100, [lactose], [vegetarian]).
 ingredient_info(quail, 200, [], [omnivore]).
-ingredient_info(cointreau_demi_glace, 90, [], [vegetarian]).
-ingredient_info(potato_millefeuille, 80, [], [vegan]).
+ingredient_info(cointreau_demi_glace, 80, [], [vegetarian]).
+ingredient_info(potato_millefeuille, 200, [], [vegan]).
 ingredient_info(beef_cheek, 250, [], [omnivore]).
-ingredient_info(horseradish_potato_puree, 80, [lactose], [vegetarian]).
-ingredient_info(sauteed_agretti, 25, [], [vegan]).
+ingredient_info(horseradish_potato_puree, 150, [lactose], [vegetarian]).
+ingredient_info(sauteed_agretti, 50, [], [vegan]).
 ingredient_info(barozzi_cake, 400, [lactose], [vegan]).
 ingredient_info(mascarpone_cream, 450, [lactose], [vegetarian]).
-ingredient_info(tiramisu_parfait, 190, [lactose], [vegetarian]).
-ingredient_info(coffee_coral, 70, [], []).
-ingredient_info(sponge_cake, 200, [gluten, lactose], [vegetarian]).
-ingredient_info(alchermes, 100, [], [vegan]).
-ingredient_info(custard, 130, [lactose], [vegetarian]).
-ingredient_info(chocolate_macaron, 120, [gluten, lactose, nuts], [vegetarian]).
-ingredient_info(crisp_wafer, 300, [gluten], [vegan]).
-ingredient_info(zabaglione_chantilly_cream, 300, [lactose], [vegetarian]).
+ingredient_info(tiramisu_parfait, 300, [lactose], [vegetarian]).
+ingredient_info(coffee_coral, 50, [], []).
+ingredient_info(sponge_cake, 270, [gluten, lactose], [vegetarian]).
+ingredient_info(alchermes, 290, [], [vegan]).
+ingredient_info(custard, 150, [lactose], [vegetarian]).
+ingredient_info(chocolate_macaron, 450, [gluten, lactose, nuts], [vegetarian]).
+ingredient_info(crisp_wafer, 500, [gluten], [vegan]).
+ingredient_info(zabaglione_chantilly_cream, 280, [lactose], [vegetarian]).
 ingredient_info(fresh_raspberries, 52, [], [vegan]).
-ingredient_info(anise_panna_cotta, 200, [lactose], [vegetarian]).
-ingredient_info(pink_peppercorn_tuille, 80, [gluten], [vegan]).
-ingredient_info(caramelized_orange, 60, [], [vegan]).
-ingredient_info(fresh_fruit_salad, 40, [], [vegan]).
-ingredient_info(lemon_sorbet, 130, [], [vegan]).
+ingredient_info(anise_panna_cotta, 300, [lactose], [vegetarian]).
+ingredient_info(pink_peppercorn_tuille, 500, [gluten], [vegan]).
+ingredient_info(caramelized_orange, 150, [], [vegan]).
+ingredient_info(fresh_fruit_salad, 50, [], [vegan]).
+ingredient_info(lemon_sorbet, 150, [], [vegan]).
 
 % Appetizers dish facsts
 dish('Platter of local cured meats served with Fried Gnocco', appetizer, [salame, gnocco_fritto]).
