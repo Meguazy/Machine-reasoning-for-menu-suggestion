@@ -76,7 +76,4 @@ The file you are currently reading, providing an overview and instructions for t
 - [@Fabio Michele De Vitis](https://github.com/FabioDevIsTyping)
 
 - [@Francesco Finucci](https://github.com/Meguazy)
-## Documentation
-
-[Documentation](https://linktodocumentation)
 
