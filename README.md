@@ -30,7 +30,6 @@ Project_Kebi/
 
 ```
 
-Here’s how you can continue the README with descriptions for each directory in a clear and concise manner:
 
 ---
 
